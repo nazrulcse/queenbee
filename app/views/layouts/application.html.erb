@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="queenbee">
+<head>
+  <title>QueenBee</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body ng-controller="OrdersCtrl">
+	<div class="container main-container">
+		<div class="header">
+      <ul class="nav nav-pills pull-right">
+        <li class="active"><a href="#">Orders</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <h3 class="text-muted">QueenBee</h3>
+    </div>
+
+    <%= yield %>
+
+	  <div class="footer">
+      <p>© yafoy - <%= Time.now.year %></p>
+    </div>
+  </div>
+</body>
+</html>
