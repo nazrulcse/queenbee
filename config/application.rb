@@ -22,6 +22,12 @@ module QueenBee
 
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
+    config.generators do |g|
+      g.stylesheets  false
+      g.javascripts  false
+      g.helper       false
+    end
+
     # API
     config.middleware.use Rack::Cors do
       allow do
