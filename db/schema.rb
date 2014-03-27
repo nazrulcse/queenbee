@@ -11,15 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140316161635) do
+ActiveRecord::Schema.define(version: 20140326230510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "unaccent"
 
+  create_table "applications", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.string   "auth_token"
+    t.boolean  "active",       default: true
+    t.text     "identicon"
+    t.integer  "orders_count", default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "orders", force: true do |t|
     t.string   "uid"
-    t.string   "source"
     t.datetime "date"
     t.string   "currency"
     t.decimal  "amount",         precision: 11, scale: 2, default: 0.0
@@ -33,17 +43,18 @@ ActiveRecord::Schema.define(version: 20140316161635) do
     t.string   "url"
     t.string   "client_email"
     t.integer  "products_count",                          default: 1
+    t.integer  "application_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "orders", ["application_id"], name: "index_orders_on_application_id", using: :btree
   add_index "orders", ["city"], name: "index_orders_on_city", using: :btree
   add_index "orders", ["country"], name: "index_orders_on_country", using: :btree
   add_index "orders", ["coupon"], name: "index_orders_on_coupon", using: :btree
   add_index "orders", ["coupon_code"], name: "index_orders_on_coupon_code", using: :btree
   add_index "orders", ["date"], name: "index_orders_on_date", using: :btree
   add_index "orders", ["gift"], name: "index_orders_on_gift", using: :btree
-  add_index "orders", ["source"], name: "index_orders_on_source", using: :btree
 
   create_table "pg_search_documents", force: true do |t|
     t.text     "content"

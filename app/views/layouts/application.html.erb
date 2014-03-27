@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="queenbee">
+<html>
 <head>
   <title>QueenBee</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
@@ -10,8 +10,8 @@
 	<div class="container main-container">
 		<div class="header">
       <ul class="nav nav-pills pull-right">
-        <li class="active"><a href="#">Orders</a></li>
-        <li><a href="#">About</a></li>
+        <li><%= link_to "Orders", orders_path %></li>
+        <li><%= link_to "Applications", applications_path %></li>
         <li><a href="#">Contact</a></li>
       </ul>
       <h3 class="text-muted">QueenBee</h3>

@@ -21,14 +21,14 @@ module Api
 
       # curl -v -H 'Authorization: Token token="111"' -H "Content-type: application/json" -X POST -d '{"order": {"uid":"11101"}}' http://localhost:3010/api/orders
       def create
-        @order = Order.create(safe_params)
+        @order = @current_application.orders.create(safe_params)
         respond_with :api, @order
       end
 
       private
 
         def safe_params
-          params.require(:order).permit(:uid, :source, :client_email, :country, :city, :products_count,
+          params.require(:order).permit(:uid, :client_email, :country, :city, :products_count,
                                         :date, :currency, :amount, :shipping, :total_price, :gift,
                                         :coupon, :coupon_code, :url)
         end

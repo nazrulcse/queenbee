@@ -1,0 +1,21 @@
+<table class="table table-light">
+  <thead>
+    <tr>
+	  	<th>Name</th>
+	    <th>Status</th>
+	    <th>Token</th>
+	    <th>Total orders</th>
+	  </tr>
+  </thead>
+
+  <tbody>
+    <% @applications.each do |app| %>
+      <tr>
+        <td><%= image_tag(app.identicon, size: '20x20') if !app.identicon.blank? %> <%= app.name %></td>
+        <td><%= app.active? ? "Active" : "Inactive" %></td>
+        <td><%= app.auth_token %></td>
+        <td><%= app.orders_count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

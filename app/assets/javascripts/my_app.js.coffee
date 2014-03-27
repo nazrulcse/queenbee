@@ -1,1 +1,0 @@
-queenbee = angular.module('queenbee', [])

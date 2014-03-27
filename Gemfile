@@ -38,9 +38,9 @@ gem 'sdoc',          group: :doc, require: false
 gem 'thin'
 gem 'pg_search'
 gem 'activerecord-import', '~> 0.4.0'
-gem 'angularjs-rails'
 gem 'hirb'
 gem 'rack-cors', :require => 'rack/cors'
+gem 'identicon'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

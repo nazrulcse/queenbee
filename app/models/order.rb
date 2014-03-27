@@ -13,10 +13,16 @@ class Order < ActiveRecord::Base
                   },
                   :ignoring => :accents
 
+
+  # ASSOCIATIONS
+  # ------------------------------------------------------------------------------------------------------
+  belongs_to :application, counter_cache: true
+
+
   # VALIDATIONS
   # ------------------------------------------------------------------------------------------------------
-  validates_presence_of :uid, :source, :date, :currency, :amount, :shipping, :total_price, :country,
-    	                  :city, :client_email
+  validates_presence_of :uid, :date, :currency, :amount, :shipping, :total_price, :country,
+   	                    :city, :client_email
 
 
   # CALLBACKS
@@ -24,10 +30,12 @@ class Order < ActiveRecord::Base
   before_create :format_fields
 
 
+  # INSTANCE METHODS
+  # ------------------------------------------------------------------------------------------------------
+
   private
 
     def format_fields
-    	self.source       = source.downcase if source
     	self.currency     = currency.downcase if currency
     	self.country      = country.downcase if country
     	self.city         = city.downcase if city

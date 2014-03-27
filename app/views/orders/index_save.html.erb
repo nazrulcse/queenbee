@@ -1,0 +1,26 @@
+<delayed-search ng-model="filterCriteria"></delayed-search>
+<span>{{filterCriteria}}</span>
+
+<input type="text" ng-model="searchOrder" ng-change="change(text)" placeholder="Search for order" class="form-control input-lg" name="searchOrder"/>
+
+<table class="table table-light">
+  <thead>
+    <tr>
+	  	<th>Source</th>
+	    <th>Date</th>
+	    <th>Total Amount</th>
+	    <th>UID</th>
+	    <th>Location</th>
+	  </tr>
+  </thead>
+
+  <tbody>
+    <tr ng-repeat="order in orders">
+      <td>{{ order.source }}</td>
+      <td>{{ order.date }}</td>
+      <td>{{ order.total_price }} {{ order.currency | uppercase }}</td>
+      <td>{{ order.uid }}</td>
+      <td>{{ order.city }} - {{ order.country }}</td>
+    </tr>
+  </tbody>
+</table>
