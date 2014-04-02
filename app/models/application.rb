@@ -6,6 +6,11 @@ class Application < ActiveRecord::Base
   has_many :orders, dependent: :destroy
 
 
+  # SCOPES
+  # ------------------------------------------------------------------------------------------------------
+  scope :active, -> { where(active: true) }
+
+
   # VALIDATIONS
   # ------------------------------------------------------------------------------------------------------
   validates_presence_of :name

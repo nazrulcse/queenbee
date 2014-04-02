@@ -1,4 +1,4 @@
-class ApplicationsController < ApplicationController
+class ApplicationsController < BaseController
 
   def index
   	@applications = Application.order('name').limit(20)

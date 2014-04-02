@@ -1,4 +1,4 @@
-class OrdersController < ApplicationController
+class OrdersController < BaseController
 
   def index
   	@orders = Order.order('created_at DESC').limit(20)

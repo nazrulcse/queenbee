@@ -10,6 +10,10 @@ puts "GENERATING SAMPLE DATA ..."
     active: [true, false].sample
   )
 end
+
+bento = Application.create!(name: "Bento")
+bento.update_attributes(auth_token: "b76cdabd077990df5d2f2b0679e316c2")
+
 puts "created applications..."
 
 
