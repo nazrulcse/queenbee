@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
   include PgSearch
   #multisearchable against: [:uid, :source]
   pg_search_scope :search_by_keyword, 
-                  :against => [:uid, :source, :client_email, :country, :city],
+                  :against => [:uid, :date, :currency, :client_email, :country, :city, :gift, :coupon],
                   :using => {
                     :tsearch => {
                       :prefix => true # match any characters

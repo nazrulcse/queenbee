@@ -5,24 +5,30 @@ module Api
       respond_to :json
 
       # curl http://localhost:3010/api/orders -H 'Authorization: Token token="111"'
+      # curl http://localhost:3010/api/orders?q=429 -H 'Authorization: Token token="111"'
       def index
+        @orders = Order.order('created_at DESC').limit(20)
         if params[:q].present?
-          respond_with Order.search_by_keyword(params[:q])
-        else
-          respond_with Order.order('created_at DESC').limit(20)
+          @orders = Order.search_by_keyword(params[:q])
         end
+        render json: @orders, status: 200
       end
 
       # curl http://localhost:3010/api/orders/:id -H 'Authorization: Token token="111"'
       def show
         @order = Order.find(params[:id])
-        respond_with :api, @order
+        render json: @order, status: 200
       end
 
       # curl -v -H 'Authorization: Token token="111"' -H "Content-type: application/json" -X POST -d '{"order": {"uid":"11101"}}' http://localhost:3010/api/orders
       def create
-        @order = @current_application.orders.create(safe_params)
-        respond_with :api, @order
+        @order = @current_application.orders.new(safe_params)
+        if @order.save
+          #render json: @order, status: :created, location: @order
+          render nothing: true, status: :created, location: @order
+        else
+          render json: @order.errors, status: 422
+        end
       end
 
       private
