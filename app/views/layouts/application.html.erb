@@ -8,14 +8,7 @@
 </head>
 <body ng-controller="OrdersCtrl">
 	<div class="container main-container">
-		<div class="header">
-      <ul class="nav nav-pills pull-right">
-        <li><%= link_to "Orders", orders_path %></li>
-        <li><%= link_to "Applications", applications_path %></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-      <h3 class="text-muted">QueenBee</h3>
-    </div>
+		<%= render 'header' %>
 
     <%= yield %>
 

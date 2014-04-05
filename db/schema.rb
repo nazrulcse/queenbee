@@ -20,34 +20,30 @@ ActiveRecord::Schema.define(version: 20140326230510) do
   create_table "applications", force: true do |t|
     t.string   "name"
     t.string   "slug"
-    t.boolean  "production_environment", default: false
     t.string   "auth_token"
-    t.boolean  "active",                 default: true
+    t.boolean  "active",       default: true
     t.text     "identicon"
-    t.integer  "orders_count",           default: 0
+    t.integer  "orders_count", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "applications", ["production_environment"], name: "index_applications_on_production_environment", using: :btree
 
   create_table "orders", force: true do |t|
     t.string   "uid"
     t.datetime "date"
     t.string   "currency"
-    t.decimal  "amount",                 precision: 11, scale: 2, default: 0.0
-    t.decimal  "shipping",               precision: 11, scale: 2, default: 0.0
-    t.decimal  "total_price",            precision: 11, scale: 2, default: 0.0
-    t.boolean  "gift",                                            default: false
-    t.boolean  "coupon",                                          default: false
+    t.decimal  "amount",         precision: 11, scale: 2, default: 0.0
+    t.decimal  "shipping",       precision: 11, scale: 2, default: 0.0
+    t.decimal  "total_price",    precision: 11, scale: 2, default: 0.0
+    t.boolean  "gift",                                    default: false
+    t.boolean  "coupon",                                  default: false
     t.string   "coupon_code"
     t.string   "country"
     t.string   "city"
     t.string   "url"
     t.string   "client_email"
-    t.integer  "products_count",                                  default: 1
+    t.integer  "products_count",                          default: 1
     t.integer  "application_id"
-    t.boolean  "production_environment",                          default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -59,7 +55,6 @@ ActiveRecord::Schema.define(version: 20140326230510) do
   add_index "orders", ["coupon_code"], name: "index_orders_on_coupon_code", using: :btree
   add_index "orders", ["date"], name: "index_orders_on_date", using: :btree
   add_index "orders", ["gift"], name: "index_orders_on_gift", using: :btree
-  add_index "orders", ["production_environment"], name: "index_orders_on_production_environment", using: :btree
 
   create_table "pg_search_documents", force: true do |t|
     t.text     "content"

@@ -18,7 +18,7 @@
         <td><%= order.date %></td>
         <td><%= number_to_currency(order.total_price, unit: order.currency.upcase, delimiter: "", format: "%n %u") %></td>
         <td><%= order.uid %></td>
-        <td><%= order.city %> - <%= order.country %></td>
+        <td><%= order.city.titleize %> - <%= order.country.titleize %></td>
       </tr>
     <% end %>
   </tbody>

@@ -14,6 +14,9 @@ end
 bento = Application.create!(name: "Bento")
 bento.update_attributes(auth_token: "b76cdabd077990df5d2f2b0679e316c2")
 
+bonbecs = Application.create!(name: "Bonbecs")
+bonbecs.update_attributes(auth_token: "47d373aca020e92bf6c291f414ced260")
+
 puts "created applications..."
 
 
@@ -34,7 +37,7 @@ orders = []
                       url: "http://domain.com/orders/#{x}",
                       client_email: "client#{i}@email.com",
                       products_count: (1..10).to_a.sample,
-                      application_id: Application.all.map(&:id).sample
+                      application_id: (1..3)to_a.sample
                      )
 end
 Order.import orders
