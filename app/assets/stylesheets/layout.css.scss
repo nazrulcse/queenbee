@@ -6,8 +6,9 @@
 body {
 	padding-top: 20px;
   padding-bottom: 20px;
-  background: #161616;
-  color: #707070;
+  background: #2e3133; // #161616;
+  color: #e2edf2; // #707070;
+  font-family: proxima-nova,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .main-container {
@@ -44,20 +45,44 @@ input[name="searchOrder"] {
 	margin-bottom: 40px;
 }
 
+.panel {
+	border-radius: 0;
+}
+
+.panel-group .panel {
+  border-radius: 0;
+}
+.panel-group .panel-footer + .panel-collapse .panel-body {
+  border-bottom: 1px solid #ddd;
+}
+.panel-custom {
+  border: none;
+}
+.panel-custom > .panel-heading {
+  color: inherit;
+  background-color: #2e3133;
+  border-bottom: 1px solid #35393b;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+
+  &:hover {
+  	background: #242628;
+		cursor: pointer;
+  }
+}
+.panel-custom > .panel-heading + .panel-collapse .panel-body {
+	color: inherit;
+  background-color: #2e3133;
+  border-top-color: #35393b;
+}
+.panel-custom > .panel-footer + .panel-collapse .panel-body {
+  border-bottom-color: #35393b;
+}
+
 
 /* Bootstrap
 * --------------------------------
 */
-.table-light {
-	thead > tr > th {
-    vertical-align: bottom;
-    border-bottom: 2px solid #555;
-  }
-
-	tbody > tr > td {
-		border-top: 1px solid #555;
-	}
-}
 
 .btn-primary {
 	color: #000000;

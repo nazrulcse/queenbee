@@ -22,6 +22,8 @@ module QueenBee
 
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
+    config.assets.paths << "#{Rails.root}/app/assets/fonts"
+
     config.generators do |g|
       g.stylesheets  false
       g.javascripts  false
