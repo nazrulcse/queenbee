@@ -10,11 +10,10 @@ $ ->
     out
   search = -> $.get($form.attr('action'), data()).done searchDone
   searchDone = (response) ->
-    console.log response
     content = $(response).find('#orders')
     $('#orders').replaceWith(content)
 
   $input.keyup ->
     if previousTimeout
       clearTimeout previousTimeout
-    previousTimeout = setTimeout search, 100
+    previousTimeout = setTimeout search, 800

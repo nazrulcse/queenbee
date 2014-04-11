@@ -3,9 +3,9 @@ class Order < ActiveRecord::Base
 	# SEARCH
   # ------------------------------------------------------------------------------------------------------
   include PgSearch
-  multisearchable :against => [:uid, :date, :client_email, :country, :city, :gift, :coupon_code]
+  # multisearchable :against => [:uid, :date, :client_email, :country, :city, :gift, :coupon_code]
   pg_search_scope :search_by_keyword, 
-                  :against => [:uid, :date, :client_email, :country, :city, :gift, :coupon_code],
+                  :against => [:uid, :client_email, :country, :city, :coupon_code, :keywords],
                   :using => {
                     :tsearch => {
                       :prefix => true # match any characters
@@ -29,6 +29,7 @@ class Order < ActiveRecord::Base
   # CALLBACKS
   # ------------------------------------------------------------------------------------------------------
   before_create :format_fields
+  before_save :sync_keywords
 
 
   # INSTANCE METHODS
@@ -41,6 +42,13 @@ class Order < ActiveRecord::Base
     	self.country      = country.downcase if country
     	self.city         = city.downcase if city
       self.client_email = client_email.downcase if client_email
+    end
+
+    def sync_keywords
+      keywords = []
+      keywords << self.date.strftime("%d/%m/%Y")
+      keywords << self.application.name.downcase.to_s
+      self.keywords = keywords.join(", ")
     end
 
 end

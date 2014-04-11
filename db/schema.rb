@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140326230510) do
+ActiveRecord::Schema.define(version: 20140411051449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20140326230510) do
     t.integer  "application_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "keywords"
   end
 
   add_index "orders", ["application_id"], name: "index_orders_on_application_id", using: :btree
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(version: 20140326230510) do
   add_index "orders", ["coupon_code"], name: "index_orders_on_coupon_code", using: :btree
   add_index "orders", ["date"], name: "index_orders_on_date", using: :btree
   add_index "orders", ["gift"], name: "index_orders_on_gift", using: :btree
+  add_index "orders", ["keywords"], name: "index_orders_on_keywords", using: :btree
 
   create_table "pg_search_documents", force: true do |t|
     t.text     "content"
