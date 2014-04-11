@@ -1,0 +1,12 @@
+<form id="global-search" action="<%= orders_path %>" method="GET">
+  <input type="text" placeholder="Search for order" class="form-control input-lg" name="query"/>
+</form>
+
+<% if @orders.any? %>
+  <div class="panel-group" id="orders">
+    <% @orders.each do |order| %>
+      <%= render 'order', order: order %>
+    <% end %>
+  </div>
+<% end %>
+
