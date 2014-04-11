@@ -23,6 +23,7 @@ class Order < ActiveRecord::Base
   # ------------------------------------------------------------------------------------------------------
   validates_presence_of :uid, :date, :currency, :amount, :shipping, :total_price, :country,
    	                    :city, :client_email
+  validates_uniqueness_of :uid, scope: :application_id
 
 
   # CALLBACKS
