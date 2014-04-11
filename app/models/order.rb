@@ -3,9 +3,9 @@ class Order < ActiveRecord::Base
 	# SEARCH
   # ------------------------------------------------------------------------------------------------------
   include PgSearch
-  #multisearchable against: [:uid, :source]
+  multisearchable :against => [:uid, :date, :client_email, :country, :city, :gift, :coupon_code]
   pg_search_scope :search_by_keyword, 
-                  :against => [:uid, :date, :currency, :client_email, :country, :city, :gift, :coupon],
+                  :against => [:uid, :date, :client_email, :country, :city, :gift, :coupon_code],
                   :using => {
                     :tsearch => {
                       :prefix => true # match any characters

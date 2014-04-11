@@ -37,7 +37,7 @@ orders = []
                       url: "http://domain.com/orders/#{x}",
                       client_email: "client#{i}@email.com",
                       products_count: (1..10).to_a.sample,
-                      application_id: (1..3)to_a.sample
+                      application_id: (1..3).to_a.sample
                      )
 end
 Order.import orders

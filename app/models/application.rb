@@ -1,6 +1,12 @@
 class Application < ActiveRecord::Base
 	require 'identicon'
 
+  # SEARCH
+  # ------------------------------------------------------------------------------------------------------
+  include PgSearch
+  multisearchable :against => [:name]
+
+
 	# ASSOCIATIONS
   # ------------------------------------------------------------------------------------------------------
   has_many :orders, dependent: :destroy
