@@ -1,7 +1,9 @@
 <div class="header">
   <ul class="nav nav-pills pull-right">
-    <li><%= link_to "Orders", orders_path %></li>
-    <li><%= link_to "Applications", applications_path %></li>
+    <!-- <li><%#= link_to "Orders", orders_path %></li> -->
   </ul>
-  <h3 class="text-muted">QueenBee</h3>
+  <form id="global-search" action="<%= orders_path %>" method="GET" class="navbar-form navbar-right">
+    <input type="text" placeholder="Search for order" class="form-control" name="query"/>
+  </form>
+  <h3 class="text-muted"><%= link_to "QueenBee", root_path %></h3>
 </div>

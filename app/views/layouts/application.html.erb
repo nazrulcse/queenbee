@@ -12,9 +12,16 @@
 
     <%= yield %>
 
-	  <div class="footer">
-      <p>© yafoy - <%= Time.now.year %></p>
-    </div>
+	  <div class="row footer">
+      <div class="col-md-6">
+        <p>© yafoy - <%= Time.now.year %></p>
+      </div>
+      <div class="col-md-6">
+        <ul>
+          <li><%= link_to "Applications", applications_path %></li>
+        </ul>
+      </div>
+    </div> <!-- end footer -->
   </div>
 </body>
 </html>
