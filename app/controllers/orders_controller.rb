@@ -25,9 +25,7 @@ class OrdersController < BaseController
     	@monthly_orders_count = monthly_orders.length
     	@monthly_orders_amount = monthly_orders.map{|o| o.total_price}.sum
   	end
-    # @orders_by_day = Order.group_by_day(:date).count
     @orders_by_day = Order.group_by_day(:date, range: 30.days.ago.midnight..Time.now).count
-    puts "**** #{@orders_by_day} ***"
   end
 
   def show
