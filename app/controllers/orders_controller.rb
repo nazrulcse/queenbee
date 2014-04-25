@@ -6,6 +6,7 @@ class OrdersController < BaseController
     else
     	@orders = Order.order('created_at DESC').limit(20)
   	end
+    @orders_by_day = Order.within_period(30.days.ago, Time.now).count(group: "DATE(date)")
   end
 
   def show
