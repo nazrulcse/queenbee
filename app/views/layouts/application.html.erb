@@ -4,6 +4,7 @@
   <title>QueenBee</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
   <%= csrf_meta_tags %>
 </head>
 <body ng-controller="OrdersCtrl">
@@ -12,9 +13,16 @@
 
     <%= yield %>
 
-	  <div class="footer">
-      <p>© yafoy - <%= Time.now.year %></p>
-    </div>
+	  <div class="row footer">
+      <div class="col-md-6">
+        <p>© yafoy - <%= Time.now.year %></p>
+      </div>
+      <div class="col-md-6">
+        <ul>
+          <li><%= link_to "Applications", applications_path %></li>
+        </ul>
+      </div>
+    </div> <!-- end footer -->
   </div>
 </body>
 </html>

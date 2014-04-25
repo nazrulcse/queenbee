@@ -1,7 +1,21 @@
-<form id="global-search" action="<%= orders_path %>" method="GET">
-  <input type="text" placeholder="Search for order" class="form-control input-lg" name="query"/>
-</form>
+<div class="row stats">
+	<div class="col-md-2">
+    <h6>&nbsp;</h6>
+    <p>Today:</p>
+    <p>This week:</p>
+    <p>This month:</p>
+	</div>
+  <% Application.all.each do |app| %>
+    <div class="col-xs-6 col-sm-6 col-md-2">
+      <h6><%= app.name.upcase %></h6>
+      <p><%= @daily_orders_amount %> <small>(<%= @daily_orders_count %>)</small></p>
+      <p><%= @weekly_orders_amount %> <small>(<%= @weekly_orders_count %>)</small></p>
+      <p><%= number_to_currency(@monthly_orders_amount) %> <small>(<%= @monthly_orders_count %>)</small></p>
+    </div>
+  <% end %>
+</div>
 
+<%= line_chart @orders_by_day, colors: ['#ff8b33'], library: {backgroundColor: "transparent"} %>
 
 <div class="panel-group" id="orders">
   <% @orders.each do |order| %>

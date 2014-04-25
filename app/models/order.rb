@@ -18,6 +18,7 @@ class Order < ActiveRecord::Base
   # ------------------------------------------------------------------------------------------------------
   belongs_to :application, counter_cache: true
 
+
   # SCOPES
   # ------------------------------------------------------------------------------------------------------
   scope :by_month,      -> (month) { where("created_at BETWEEN '#{month.beginning_of_month}' AND '#{month.end_of_month}'") }
@@ -31,7 +32,7 @@ class Order < ActiveRecord::Base
   # ------------------------------------------------------------------------------------------------------
   validates_presence_of :uid, :date, :currency, :amount, :shipping, :total_price, :country,
    	                    :city, :client_email
-  validates_uniqueness_of :uid, scope: :application_id
+  #validates_uniqueness_of :uid, scope: :application_id
 
 
   # CALLBACKS

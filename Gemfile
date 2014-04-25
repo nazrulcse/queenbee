@@ -41,6 +41,8 @@ gem 'activerecord-import', '~> 0.4.0'
 gem 'hirb'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'identicon'
+gem 'groupdate'
+gem 'chartkick'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
