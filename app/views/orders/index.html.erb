@@ -5,7 +5,7 @@
     <p>This week:</p>
     <p>This month:</p>
 	</div>
-  <% Application.all.each do |app| %>
+  <% Application.order('name').each do |app| %>
     <div class="col-xs-6 col-sm-6 col-md-2">
       <h6><%= app.name.upcase %></h6>
       <p><%= @daily_orders_amount %> <small>(<%= @daily_orders_count %>)</small></p>
