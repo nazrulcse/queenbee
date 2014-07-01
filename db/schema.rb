@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140701214056) do
+ActiveRecord::Schema.define(version: 20140701234248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20140701214056) do
     t.integer  "week_day"
     t.integer  "month_day"
     t.integer  "hour"
+    t.decimal  "tax",            precision: 11, scale: 2, default: 0.0
   end
 
   add_index "orders", ["application_id"], name: "index_orders_on_application_id", using: :btree
