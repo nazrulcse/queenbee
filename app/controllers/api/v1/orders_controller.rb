@@ -20,7 +20,7 @@ module Api
         render json: @order, status: 200
       end
 
-      # curl -v -H 'Authorization: Token token="111"' -H "Content-type: application/json" -X POST -d '{"order": {"uid":"11101"}}' http://localhost:3010/api/orders
+      # curl -v -H 'Authorization: Token token="111"' -H "Content-type: application/json" -X POST -d '{"order": {"date": "2014-07-01 14:50:28", "currency": "CAD", "country": "Canada", "client_email": "d@email.com", "uid": "0000099"}}' http://localhost:3010/api/orders
       def create
         @order = @current_application.orders.new(safe_params)
         if @order.save

@@ -7,7 +7,8 @@ puts "GENERATING SAMPLE DATA ..."
   Application.create!(
     name: "app#{x}",
     slug: "app#{x}",
-    active: [true, false].sample
+    active: [true, false].sample,
+    default_currency: ['cad', 'eur', 'usd', 'jpy'].sample
   )
 end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140411051449) do
+ActiveRecord::Schema.define(version: 20140701214056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,11 +21,12 @@ ActiveRecord::Schema.define(version: 20140411051449) do
     t.string   "name"
     t.string   "slug"
     t.string   "auth_token"
-    t.boolean  "active",       default: true
+    t.boolean  "active",           default: true
     t.text     "identicon"
-    t.integer  "orders_count", default: 0
+    t.integer  "orders_count",     default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "default_currency"
   end
 
   create_table "orders", force: true do |t|
@@ -47,6 +48,9 @@ ActiveRecord::Schema.define(version: 20140411051449) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "keywords"
+    t.integer  "week_day"
+    t.integer  "month_day"
+    t.integer  "hour"
   end
 
   add_index "orders", ["application_id"], name: "index_orders_on_application_id", using: :btree
@@ -56,7 +60,10 @@ ActiveRecord::Schema.define(version: 20140411051449) do
   add_index "orders", ["coupon_code"], name: "index_orders_on_coupon_code", using: :btree
   add_index "orders", ["date"], name: "index_orders_on_date", using: :btree
   add_index "orders", ["gift"], name: "index_orders_on_gift", using: :btree
+  add_index "orders", ["hour"], name: "index_orders_on_hour", using: :btree
   add_index "orders", ["keywords"], name: "index_orders_on_keywords", using: :btree
+  add_index "orders", ["month_day"], name: "index_orders_on_month_day", using: :btree
+  add_index "orders", ["week_day"], name: "index_orders_on_week_day", using: :btree
 
   create_table "pg_search_documents", force: true do |t|
     t.text     "content"

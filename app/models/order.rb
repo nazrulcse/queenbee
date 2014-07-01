@@ -30,15 +30,16 @@ class Order < ActiveRecord::Base
 
   # VALIDATIONS
   # ------------------------------------------------------------------------------------------------------
-  validates_presence_of :uid, :date, :currency, :amount, :shipping, :total_price, :country,
+  validates_presence_of :uid, :date, :amount, :shipping, :total_price, :country,
    	                    :city, :client_email
+  validates_presence_of :currency, unless: Proc.new{ |o| o.application.default_currency.present? }
   # validates_uniqueness_of :uid, scope: :application_id
 
 
   # CALLBACKS
   # ------------------------------------------------------------------------------------------------------
   before_create :format_fields
-  before_save :sync_keywords
+  before_save   :sync_keywords
 
 
   # INSTANCE METHODS
@@ -47,10 +48,13 @@ class Order < ActiveRecord::Base
   private
 
     def format_fields
-    	self.currency     = currency.downcase if currency
+      self.currency     = currency.present? ? currency.downcase : application.try(:default_currency)
     	self.country      = country.downcase if country
     	self.city         = city.downcase if city
       self.client_email = client_email.downcase if client_email
+      self.week_day     = date.to_date.cwday if date
+      self.month_day    = date.day if date
+      self.hour         = date.to_time.hour if date
     end
 
     def sync_keywords

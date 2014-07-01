@@ -20,7 +20,7 @@
         <%= content_tag(:span, '', class: 'glyphicon glyphicon-tag') if order.coupon %>
         <%= content_tag(:span, order.coupon_code) if order.coupon_code.present? %>
       </div>
-      <div class="col-xs-6 col-sm-5"><%= link_to order.url, order.url, target: :blank %></div>
+      <div class="col-xs-6 col-sm-5"><%= link_to order.url, "#{order.url}", target: :blank %></div>
       <div class="col-xs-6 col-sm-2"><span class="badge"><%= pluralize(order.products_count, 'produit') %></span></div>
     </div>
     </div>
