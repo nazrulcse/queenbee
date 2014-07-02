@@ -38,8 +38,7 @@ class Order < ActiveRecord::Base
 
   # CALLBACKS
   # ------------------------------------------------------------------------------------------------------
-  before_create :format_fields
-  before_save   :sync_keywords
+  before_save :format_fields, :sync_keywords
 
 
   # INSTANCE METHODS

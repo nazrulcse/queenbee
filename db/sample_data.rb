@@ -18,6 +18,10 @@ bento.update_attributes(auth_token: "b76cdabd077990df5d2f2b0679e316c2")
 bonbecs = Application.create!(name: "Bonbecs")
 bonbecs.update_attributes(auth_token: "47d373aca020e92bf6c291f414ced260")
 
+a = Application.first
+a.auth_token = '111'
+a.save!
+
 puts "created applications..."
 
 
