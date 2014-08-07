@@ -24,10 +24,10 @@ module Api
       def create
         @order = @current_application.orders.new(safe_params)
         if @order.save
-          #render json: @order, status: :created, location: @order
-          render nothing: true, status: :created, location: @order
+          render json: @order, status: :created
         else
           render json: @order.errors, status: 422
+          puts "**** #{@order.errors.full_messages.to_sentence} ****"
         end
       end
 
