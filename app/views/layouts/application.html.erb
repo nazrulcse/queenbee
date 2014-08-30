@@ -10,19 +10,11 @@
 <body ng-controller="OrdersCtrl">
 	<div class="container main-container">
 		<%= render 'header' %>
+    <%= render 'flash' %>
 
     <%= yield %>
 
-	  <div class="row footer">
-      <div class="col-md-6">
-        <p>© yafoy - <%= Time.now.year %></p>
-      </div>
-      <div class="col-md-6">
-        <ul>
-          <li><%= link_to "Applications", applications_path %></li>
-        </ul>
-      </div>
-    </div> <!-- end footer -->
+	  <%= render 'footer' %>
   </div>
 </body>
 </html>

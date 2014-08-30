@@ -10,8 +10,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :applications
-  resources :orders, only: [:index, :show]
+  resources :applications, only: [:index, :show]
+  resources :orders,       only: [:index, :show] do
+    get 'import', on: :collection
+    post 'process_import', on: :collection
+  end
 
   root 'orders#index'
 

@@ -32,4 +32,17 @@ class OrdersController < BaseController
   	@order = Order.find(params[:id])
   end
 
+  def import
+  end
+
+  def process_import
+    if params[:file].present?
+      app = Application.find(params[:application_id])
+      app.orders.import(params[:file])
+      redirect_to import_orders_url, notice: 'Orders were successfully imported.'
+    else
+      redirect_to import_orders_url, alert: 'Please select a file to import.'
+    end
+  end
+
 end

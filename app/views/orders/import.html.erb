@@ -1,0 +1,14 @@
+<%= page_title('Import orders from file') %>
+
+<p class="alert alert-info">Make sure to download our <%= link_to "sample file", "/sample_orders.xlsx", class: 'alert-link' %> to get started.</p>
+
+<%= form_tag process_import_orders_path, multipart: true do %>
+  <%= select_tag 'application_id', options_from_collection_for_select(Application.order('name'), 'id', 'name') %>
+  <div class="form-group">
+    <%= file_field_tag :file %>
+    <p class="help-block">Only Excel files are supported.</p>
+  </div>
+  <div class="form-actions">
+  	<%= submit_tag 'Import', class: 'btn btn-default' %>
+  </div>
+<% end %>

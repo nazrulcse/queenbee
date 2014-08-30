@@ -43,6 +43,7 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'identicon'
 gem 'groupdate'
 gem 'chartkick'
+gem 'roo', github: 'Empact/roo'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
