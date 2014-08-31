@@ -8,7 +8,8 @@
 }
 
 .panel {
-	border-radius: 0;
+  border-radius: 0;
+  //.panel-body { color: #333; }
 }
 
 .panel-group .panel {
@@ -28,12 +29,12 @@
   border-top-right-radius: 0;
 
   &:hover {
-  	background: $dark-grey;
-		cursor: pointer;
+    background: $dark-grey;
+    cursor: pointer;
   }
 }
 .panel-custom > .panel-heading + .panel-collapse .panel-body {
-	color: inherit;
+  color: inherit;
   background-color: $grey;
   border-top-color: #35393b;
 }
@@ -41,7 +42,8 @@
   border-bottom-color: #35393b;
 }
 
-/* Bootstrap
+
+/* Form
 * --------------------------------
 */
 .form-actions { margin: 20px 0; }

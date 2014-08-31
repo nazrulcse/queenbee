@@ -13,8 +13,7 @@ class Application < ActiveRecord::Base
 
   # VALIDATIONS
   # ------------------------------------------------------------------------------------------------------
-  validates_presence_of :name
-  validates_length_of   :default_currency, is: 3, allow_blank: true
+  validates_presence_of :name, :locale
 
 
   # CALLBACKS
@@ -31,7 +30,6 @@ class Application < ActiveRecord::Base
   	  self.auth_token       = SecureRandom.hex
       self.identicon        = Identicon.data_url_for name, 128, [255, 255, 255]
       self.slug             = slug.present? ? slug.parameterize : name.parameterize
-      self.default_currency = self.default_currency.downcase if default_currency
     end
 
 end

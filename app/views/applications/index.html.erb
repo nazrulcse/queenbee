@@ -11,7 +11,7 @@
   <tbody>
     <% @applications.each do |app| %>
       <tr>
-        <td><%= image_tag(app.identicon, size: '20x20') if !app.identicon.blank? %> <%= app.name %></td>
+        <td><%= image_tag(app.identicon, size: '20x20') if !app.identicon.blank? %> <%= link_to app.name, application_path(app) %></td>
         <td><%= app.active? ? "Active" : "Inactive" %></td>
         <td><%= app.auth_token %></td>
         <td><%= app.orders_count %></td>

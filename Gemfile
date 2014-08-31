@@ -36,6 +36,7 @@ gem 'sdoc',          group: :doc, require: false
 #gem 'spring', '~> 1.1.2',       group: :development
 
 gem 'thin'
+gem 'simple_form', '~> 3.1.0rc2'
 gem 'pg_search'
 gem 'activerecord-import', '~> 0.4.0'
 gem 'hirb'
@@ -44,6 +45,7 @@ gem 'identicon'
 gem 'groupdate'
 gem 'chartkick'
 gem 'roo', github: 'Empact/roo'
+gem 'rails-i18n', '~> 4.0.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
