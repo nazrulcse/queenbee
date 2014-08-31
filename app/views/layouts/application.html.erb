@@ -8,12 +8,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body ng-controller="OrdersCtrl">
+  <%= render 'header' %>
+
 	<div class="container main-container">
-		<%= render 'header' %>
     <%= render 'flash' %>
-
     <%= yield %>
-
+    <%= yield(:sidebar) if content_for?(:sidebar) %>
 	  <%= render 'footer' %>
   </div>
 </body>

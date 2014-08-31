@@ -8,40 +8,25 @@
 }
 
 .panel {
-  border-radius: 0;
-  //.panel-body { color: #333; }
-}
+  //border-radius: 0;
+  .panel-body {
+    color: #333;
 
-.panel-group .panel {
-  border-radius: 0;
-}
-.panel-group .panel-footer + .panel-collapse .panel-body {
-  border-bottom: 1px solid #ddd;
-}
-.panel-custom {
-  border: none;
-}
-.panel-custom > .panel-heading {
-  color: inherit;
-  background-color: $grey;
-  border-bottom: 1px solid #35393b;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-
-  &:hover {
-    background: $dark-grey;
-    cursor: pointer;
+    h2 { margin: 0; }
   }
 }
-.panel-custom > .panel-heading + .panel-collapse .panel-body {
-  color: inherit;
-  background-color: $grey;
-  border-top-color: #35393b;
-}
-.panel-custom > .panel-footer + .panel-collapse .panel-body {
-  border-bottom-color: #35393b;
-}
 
+/* Links
+* --------------------------------
+*/
+a {
+  color: $orange;
+
+  &:hover {
+    color: $orange-dark;
+    text-decoration: none;
+  }
+}
 
 /* Form
 * --------------------------------

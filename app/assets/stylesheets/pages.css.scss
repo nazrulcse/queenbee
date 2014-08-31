@@ -1,9 +1,39 @@
 @import "variables";
 
+.push-menu {
+  position: fixed;
+  right: -250px;
+  width: 250px;
+  height: 100%;
+  top: 0;
+  z-index: 1000;
+  margin-top: 50px;
+  padding: 10px 5px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+
+  &.push-menu-open {
+    right: 0px;
+  }
+
+  .event {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #efefef;
+    line-height: 1.5em;
+  }
+}
+
+// Orders#index
 .stats {
-	background: $dark-grey;
+	background: $grey;
 	color: #fff;
 	margin-bottom: 40px;
+
+	a {
+		color: $yellow;
+		&:hover { color: $yellow-dark; }
+	}
 }
 
 #chart-1 { margin-bottom: 40px; }

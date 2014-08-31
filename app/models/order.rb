@@ -21,11 +21,11 @@ class Order < ActiveRecord::Base
 
   # SCOPES
   # ------------------------------------------------------------------------------------------------------
-  scope :by_month,      -> (month) { where("created_at BETWEEN '#{month.beginning_of_month}' AND '#{month.end_of_month}'") }
-  scope :by_day,        -> (day) { where("created_at BETWEEN '#{day.beginning_of_day}' AND '#{day.end_of_day}'") }
+  scope :by_month,      -> (month)    { where("date BETWEEN '#{month.beginning_of_month}' AND '#{month.end_of_month}'") }
+  scope :by_day,        -> (day)      { where("date BETWEEN '#{day.beginning_of_day}' AND '#{day.end_of_day}'") }
   scope :within_period, -> (from, to) { where(date: (from..to)) }
-  scope :from_date,     -> (from) { where("created_at >= ?", from) }
-  scope :to_date,       -> (to) { where("created_at <= ?", to) }
+  scope :from_date,     -> (from)     { where("date >= ?", from) }
+  scope :to_date,       -> (to)       { where("date <= ?", to) }
 
 
   # VALIDATIONS

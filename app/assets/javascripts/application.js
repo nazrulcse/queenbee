@@ -15,10 +15,3 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
-
-
-
-$(".has-popover").tooltip({
-  selector: '[data-toggle="tooltip"]',
-  container: "body"
-});

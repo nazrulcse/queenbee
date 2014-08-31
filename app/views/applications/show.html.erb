@@ -1,5 +1,6 @@
 <%= page_title(@application.name) do %>
-  <%= link_to "Edit", edit_application_path(@application), class: 'btn btn-link pull-right' %>
+  <%= link_to 'Edit', edit_application_path(@application), class: 'btn btn-link pull-right' %>
+  <%= link_to 'Toggle orders', "#", id: 'toggle-push-menu', class: 'pull-right btn btn-link' %>
 <% end %>
 
 <%= render 'order_price' %>
@@ -38,3 +39,9 @@
   <li>Per-plan Gross Revenue</li>
   <li>Per-plan Fees</li>
 </ul>
+
+<% if @orders.any? %>
+  <%= content_for :sidebar do %>
+	  <%= render 'recent_orders', orders: @orders %>
+	<% end %>
+<% end %>

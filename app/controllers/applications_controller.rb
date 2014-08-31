@@ -14,6 +14,7 @@ class ApplicationsController < BaseController
   end
 
   def show
+  	@orders = @application.orders.order('date DESC').limit(20)
   	@min_order = @application.orders.minimum(:total_price)
   	@max_order = @application.orders.maximum(:total_price)
   	@avg_order = @application.orders.average(:total_price)
