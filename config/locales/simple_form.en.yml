@@ -11,8 +11,10 @@ en:
     error_notification:
       default_message: "Please review the problems below:"
     # Examples
-    # labels:
-    #   defaults:
+    labels:
+      defaults:
+        subscription_based: Revenue model
+        locale: Localization (currency, date, numbers)
     #     password: 'Password'
     #   user:
     #     new:

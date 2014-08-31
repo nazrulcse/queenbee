@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20140831003726) do
     t.integer  "orders_count",       default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "locale"
+    t.string   "locale",             default: "en"
     t.boolean  "subscription_based", default: false
   end
 

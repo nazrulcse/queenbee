@@ -22,4 +22,6 @@ module ApplicationHelper
     end
   end
 
+  CURRENCIES_SUPPORTED = [ ['English', 'en'], ['English (Canada)', 'en-CA'], ['Français', 'fr'], ['Québec', 'fr-CA'] ]
+
 end
