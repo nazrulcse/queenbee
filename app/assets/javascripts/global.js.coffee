@@ -1,9 +1,4 @@
 ready = ->
-  $("#toggle-push-menu").click (e) ->
-    e.preventDefault()
-    $(".push-menu").toggleClass "active"
-    $(".push-menu").toggleClass "push-menu-open"
-
   $("[data-toggle='tooltip']").tooltip()
 
   $(document).on "click", ".is-openable", ->
