@@ -2,14 +2,14 @@ class OrdersController < BaseController
 
   def index
   	if params[:query].present?
-  		@orders = Order.search_by_keyword(params[:query]).limit(30)
+  		@orders = Order.search_by_keyword(params[:query]).limit(20)
     else
-    	@orders = Order.order('created_at DESC').limit(20)
+      @applications = Application.order('name')
+      orders = Order.within_period(Date.today.beginning_of_year, Date.today)
 
       # stats
-      # fetch orders
-      orders = Order.within_period(Date.today, Date.today.beginning_of_year)
-      orders.explain
+      # recent orders
+      @orders = orders.order('created_at DESC').limit(20)
 
       # Today's orders
     	daily_orders           = orders.by_day(Date.today)

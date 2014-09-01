@@ -1,4 +1,5 @@
 <%= page_title(@application.name) do %>
+  <%= status_tag(@application.orders_count, level: :default) %>
   <%= link_to 'Edit', edit_application_path(@application), class: 'btn btn-link pull-right' %>
   <%= link_to 'Toggle orders', "#", id: 'toggle-push-menu', class: 'pull-right btn btn-link' %>
 <% end %>

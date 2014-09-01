@@ -34,9 +34,39 @@ a {
 .form-actions { margin: 20px 0; }
 
 
+/* Label
+* --------------------------------
+*/
+.label {
+  font-size: 12px;
+  box-shadow: 3px 3px 0 rgba(0,0,0,.1);
+
+  &.label-default {
+    background-color: $yellow;
+    color: $grey;
+  }
+}
+
 /* Bootstrap
 * --------------------------------
 */
+.table > tbody + tbody {
+  border-top: 2px solid $brown;
+}
+
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  border-top: 1px solid $brown;
+}
+
+.table > thead > tr > th {
+  border-bottom: 2px solid $brown;
+}
+
 
 .btn-primary {
 	color: #000000;
