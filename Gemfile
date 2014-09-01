@@ -47,6 +47,7 @@ gem 'chartkick'
 gem 'roo', github: 'Empact/roo'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'rails_bootstrap_helper', '~> 1.0.1', github: 'olimart/rails_bootstrap_helper', branch: 'bs3.1'
+gem 'responders', '~> 2.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
