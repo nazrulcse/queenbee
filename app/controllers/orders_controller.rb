@@ -1,10 +1,10 @@
 class OrdersController < BaseController
 
   def index
+    @applications = Application.order('name')
   	if params[:query].present?
   		@orders = Order.search_by_keyword(params[:query]).limit(20)
     else
-      @applications = Application.order('name')
       orders = Order.within_period(Date.today.beginning_of_year, Date.today)
 
       # stats

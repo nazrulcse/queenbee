@@ -37,7 +37,7 @@ gem 'sdoc',          group: :doc, require: false
 
 gem 'thin'
 gem 'simple_form', '~> 3.1.0rc2'
-gem 'pg_search'
+gem 'pg_search', '~> 0.7.7'
 gem 'activerecord-import', '~> 0.4.0'
 gem 'hirb'
 gem 'rack-cors', :require => 'rack/cors'
