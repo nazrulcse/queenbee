@@ -43,7 +43,7 @@ class Order < ActiveRecord::Base
 
   # INSTANCE METHODS
   # ------------------------------------------------------------------------------------------------------
-  def self.import(file)
+  def self.import_file(file)
     allowed_attributes = [ 'uid', 'client_email', 'country', 'city', 'products_count',
                            'date', 'currency', 'amount', 'shipping', 'total_price', 'gift',
                            'coupon', 'coupon_code', 'url', 'tax', 'source' ]

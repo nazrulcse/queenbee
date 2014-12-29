@@ -14,10 +14,25 @@ class ApplicationsController < BaseController
   end
 
   def show
-  	@orders    = @application.orders.order('date DESC').limit(20)
-  	@min_order = @application.orders.minimum(:total_price)
-  	@max_order = @application.orders.maximum(:total_price)
-  	@avg_order = @application.orders.average(:total_price)
+    # let's define orders time period
+    start_date = params[:start_date] || 7.days.ago
+    end_date   = params[:end_date] || Time.zone.now
+
+    # Initialize service
+    service = OrderWidgets.new(@application, start_date, end_date)
+
+    # Call widgets
+    # @min_order = @application.orders.minimum(:total_price)
+  	@min_order    = service.order_min_price
+    @max_order    = service.order_max_price
+  	@median_order = service.order_median_price
+
+    if @application.subscription_based?
+      # render SaaS-specific stats.
+    end
+
+    # Recent orders
+    @orders = @application.orders.order('date DESC').limit(20)
   end
 
   def create

@@ -8,7 +8,7 @@ puts "GENERATING SAMPLE DATA ..."
     name: "app#{x}",
     slug: "app#{x}",
     active: [true, false].sample,
-    default_currency: ['cad', 'eur', 'usd', 'jpy'].sample
+    locale: ['cad', 'eur', 'usd', 'jpy'].sample
   )
 end
 
@@ -29,7 +29,7 @@ orders = []
 9500.times do |i|
   x = i + 1
   orders << Order.new(uid: "#{x}",
-                      date: Time.now,
+                      date: (1..200).to_a.sample.days.ago,
                       currency: ['cad', 'eur', 'usd', 'aud', 'jpy'].sample,
                       amount: ['5', '10', '12.25', '3.33', '54.78', '49.03', '21.66', '7.4'].sample,
                       shipping: ['5', '10', '12.25', '3.33', '54.78', '49.03', '21.66', '7.4'].sample,
@@ -40,7 +40,7 @@ orders = []
                       country: ['France', 'Canada', 'Vietnam', 'Ukraine', 'Belgique', 'Japon'].sample,
                       city: ['Paris', 'Monaco', 'Troyes', 'Nancy', 'Lyon', 'Valcourt', 'Tokyo'].sample,
                       url: "http://domain.com/orders/#{x}",
-                      client_email: "client#{i}@email.com",
+                      client_email: "client#{(1..20).to_a.sample}@email.com",
                       products_count: (1..10).to_a.sample,
                       application_id: (1..3).to_a.sample
                      )

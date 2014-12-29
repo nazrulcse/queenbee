@@ -38,6 +38,8 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.1)
+    active_median (0.1.2)
+      activerecord
     activejob (4.2.0)
       activesupport (= 4.2.0)
       globalid (>= 0.3.0)
@@ -213,18 +215,19 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_median
   activerecord-import (~> 0.4.0)
   better_errors (~> 2.0)
   byebug
   chartkick
   coffee-rails (~> 4.1.0)
-  groupdate
+  groupdate (~> 2.4.0)
   hirb
   identicon
   jbuilder (~> 2.0)
   jquery-rails
   pg
-  pg_search (~> 0.7.7)
+  pg_search (~> 0.7.8)
   rack-cors
   rails (= 4.2)
   rails-i18n (~> 4.0.0)

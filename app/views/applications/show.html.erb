@@ -4,6 +4,17 @@
   <%= link_to 'Toggle orders', "#", id: 'toggle-push-menu', class: 'pull-right btn btn-link' %>
 <% end %>
 
+<p class="tright">
+  <small>
+    <%= link_to 'Today', application_path(@application, start_date: Date.today, end_date: Date.today) %>
+    <%= link_to '7d', application_path(@application, start_date: 7.days.ago.to_date, end_date: Date.today) %>
+    <%= link_to '30d', application_path(@application, start_date: 30.days.ago.to_date, end_date: Date.today) %>
+    <%= link_to '3m', application_path(@application, start_date: 3.months.ago.to_date, end_date: Date.today) %>
+    <%= link_to '6m', application_path(@application, start_date: 6.months.ago.to_date, end_date: Date.today) %>
+    <%= link_to '12m', application_path(@application, start_date: 12.months.ago.to_date, end_date: Date.today) %>
+  </small>
+</p>
+
 <%= render 'order_price' %>
 
 <ul>
