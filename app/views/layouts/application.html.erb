@@ -8,21 +8,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body ng-controller="OrdersCtrl">
+  <%= render 'header' %>
+
 	<div class="container main-container">
-		<%= render 'header' %>
-
+    <%= render 'flash' %>
     <%= yield %>
-
-	  <div class="row footer">
-      <div class="col-md-6">
-        <p>© yafoy - <%= Time.now.year %></p>
-      </div>
-      <div class="col-md-6">
-        <ul>
-          <li><%= link_to "Applications", applications_path %></li>
-        </ul>
-      </div>
-    </div> <!-- end footer -->
+    <%= yield(:sidebar) if content_for?(:sidebar) %>
+	  <%= render 'footer' %>
   </div>
+
+  <script>
+    $( "#toggle-push-menu" ).click(function(event){
+      event.preventDefault();
+      $( ".push-menu" ).toggleClass('push-menu-open');
+    });
+  </script>
 </body>
 </html>

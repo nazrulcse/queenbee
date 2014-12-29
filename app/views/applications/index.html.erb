@@ -1,3 +1,5 @@
+<p><%= link_to "New app.", new_application_path, class: 'btn btn-default pull-right' %></p>
+
 <table class="table table-light">
   <thead>
     <tr>
@@ -11,8 +13,8 @@
   <tbody>
     <% @applications.each do |app| %>
       <tr>
-        <td><%= image_tag(app.identicon, size: '20x20') if !app.identicon.blank? %> <%= app.name %></td>
-        <td><%= app.active? ? "Active" : "Inactive" %></td>
+        <td><%= image_tag(app.identicon, size: '20x20') if !app.identicon.blank? %> <%= link_to app.name, application_path(app) %></td>
+        <td><%= app.active? ? 'Active' : 'Inactive' %></td>
         <td><%= app.auth_token %></td>
         <td><%= app.orders_count %></td>
       </tr>

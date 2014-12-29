@@ -1,4 +1,7 @@
 en:
+  cancel: Cancel
+  please_wait: Please wait...
+  or: or
   activerecord:
     attributes:
       order:

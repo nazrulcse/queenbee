@@ -1,0 +1,11 @@
+<div class="push-menu push-menu-open">
+  <h4>Recent orders</h4>
+  <% @orders.each do |order| %>
+    <div class="event">
+		  <%= order.application.name.upcase %> - 
+		  <b><%= number_to_currency(order.total_price, locale: order.application.locale || 'en') %></b>
+		  <small><%= distance_of_time_in_words_to_now(order.date) %></small>
+		  <p><%= link_to order.client_email, "#{order.url}", target: :blank %> - <%= order.city.titleize %> - <%= order.country.titleize %></p>
+		</div>
+  <% end %>
+</div>

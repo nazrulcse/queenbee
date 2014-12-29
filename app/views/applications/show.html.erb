@@ -1,0 +1,48 @@
+<%= page_title(@application.name) do %>
+  <%= status_tag(@application.orders_count, level: :default) %>
+  <%= link_to 'Edit', edit_application_path(@application), class: 'btn btn-link pull-right' %>
+  <%= link_to 'Toggle orders', "#", id: 'toggle-push-menu', class: 'pull-right btn btn-link' %>
+<% end %>
+
+<%= render 'order_price' %>
+
+<ul>
+  <li>Average order price country | city</li>
+  <li>Month-to-month comparison
+  - Growth
+  - Time to reach if subscription</li>
+  <li>Average orders per day | week | month | year</li>
+  <li>CA / day / month / year + prevision based on growth</li>
+  <li>Most successful coupon
+  - Count
+  - Value</li>
+  <li>Average order price country | city</li>
+  <li>Monthly Recurring Revenue</li>
+  <li>Lifetime Value</li>
+  <li>User Churn</li>
+  <li>Annual Run Rate</li>
+  <li>Net Revenue</li>
+  <li>Total Fees</li>
+  <li>Active Customers</li>
+  <li>Cancelled Accounts</li>
+  <li>Average Revenue Per User</li>
+  <li>Revenue Growth Rate</li>
+  <li>Customer Growth Rate</li>
+  <li>ARPU Growth Rate</li>
+  <li>Failed Charges</li>
+  <li>Refunds</li>
+  <li>Revenue Lost to Coupons</li>
+  <li>Downgrades</li>
+  <li>Upgrades</li>
+  <li>Per-plan Customer Count</li>
+  <li>Per-plan LTV</li>
+  <li>Per-plan Churn</li>
+  <li>Per-plan Gross Revenue</li>
+  <li>Per-plan Fees</li>
+</ul>
+
+<% if @orders.any? %>
+  <%= content_for :sidebar do %>
+	  <%= render 'recent_orders', orders: @orders %>
+	<% end %>
+<% end %>
