@@ -45,7 +45,11 @@ class OrderWidgets
 	end
 
 	def orders_average
-		orders.count / period_in_days
+		if orders.count > 0 && period_in_days > 0
+			orders.count / period_in_days
+		else
+			0
+		end
 	end
 
 	def orders_average_price
