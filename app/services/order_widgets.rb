@@ -10,6 +10,10 @@ class OrderWidgets
 	  puts "**** found #{@orders.length} orders ****"
 	end
 
+	def total_price
+		@orders.sum(:total_price) || 0
+	end
+
 	def order_min_price
 		@orders.minimum(:total_price) || 0
     # @orders.group_by_day(:date, last: period || @period).minimum(:total_price)
@@ -19,8 +23,32 @@ class OrderWidgets
 		@orders.maximum(:total_price) || 0
 	end
 
-	def order_median_price
+	def order_average_price
 		@orders.average(:total_price) || 0
+	end
+
+	def orders_count
+		@orders.group_by_day(:date).count
+	end
+
+	def orders_average_price
+		@orders.group_by_day(:date).average(:total_price)
+	end
+
+	def coupons
+		@orders.group(:coupon_code).count
+	end
+
+	def products_count
+		@orders.group(:products_count).count
+	end
+
+	def sources
+		@orders.group(:source).count
+	end
+
+	def top_clients
+		@orders.group(:client_email).limit(10).count
 	end
 
 	# To get a specific time range, use:

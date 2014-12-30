@@ -7,10 +7,17 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to "QueenBee", root_path, class: "navbar-brand" %>
+      <%= link_to "#{t 'site_name', default: 'QueenBee'}", root_path, class: "navbar-brand" %>
     </div>
-    <form id="global-search" action="<%= orders_path %>" method="GET" class="navbar-form navbar-right">
-    <input type="text" placeholder="Search..." class="form-control" name="query"/>
-  </form>
+    <nav class="collapse navbar-collapse bs-navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'Recent orders', "#", id: 'toggle-push-menu' %></li>
+        <li><%= link_to 'Applications', applications_path %></li>
+        <li><%= link_to 'Import orders', import_orders_path %></li>
+      </ul>
+      <form id="global-search" action="<%= orders_path %>" method="GET" class="navbar-form navbar-right">
+        <input type="text" placeholder="Search..." class="form-control" name="query"/>
+      </form>
+    </nav>
   </div>
 </div>

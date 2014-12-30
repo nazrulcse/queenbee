@@ -21,11 +21,20 @@ class ApplicationsController < BaseController
     # Initialize service
     service = OrderWidgets.new(@application, start_date, end_date)
 
-    # Call widgets
-    # @min_order = @application.orders.minimum(:total_price)
+    # Widgets
+    ## Simple stats
+    @total_price  = service.total_price
   	@min_order    = service.order_min_price
     @max_order    = service.order_max_price
-  	@median_order = service.order_median_price
+  	@avg_order    = service.order_average_price
+
+    ## Graphs
+    @orders_count     = service.orders_count
+    @orders_avg_price = service.orders_average_price
+    @coupons          = service.coupons
+    @sources          = service.sources
+    @products_count   = service.products_count
+    @top_clients      = service.top_clients
 
     if @application.subscription_based?
       # render SaaS-specific stats.

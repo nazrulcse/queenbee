@@ -1,7 +1,6 @@
 <%= page_title(@application.name) do %>
   <%= status_tag(@application.orders_count, level: :default) %>
   <%= link_to 'Edit', edit_application_path(@application), class: 'btn btn-link pull-right' %>
-  <%= link_to 'Toggle orders', "#", id: 'toggle-push-menu', class: 'pull-right btn btn-link' %>
 <% end %>
 
 <p class="tright">
@@ -15,19 +14,19 @@
   </small>
 </p>
 
-<%= render 'order_price' %>
+<%= render 'price_widgets' %>
+<%= render 'graph_widgets' %>
 
+<br><br><br>
 <ul>
   <li>Average order price country | city</li>
   <li>Month-to-month comparison
   - Growth
   - Time to reach if subscription</li>
-  <li>Average orders per day | week | month | year</li>
-  <li>CA / day / month / year + prevision based on growth</li>
+  <li>Prevision CA based on growth</li>
   <li>Most successful coupon
   - Count
   - Value</li>
-  <li>Average order price country | city</li>
   <li>Monthly Recurring Revenue</li>
   <li>Lifetime Value</li>
   <li>User Churn</li>

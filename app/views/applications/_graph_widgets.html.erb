@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Orders count
+		    	<i class="has-popover glyphicon glyphicon-info-sign pull-right" data-toggle="tooltip" data-placement="bottom" title="Count of orders"></i></h3>
+		  </div>
+		  <div class="panel-body">
+		    <%= line_chart @orders_count %>
+		  </div>
+		</div>
+  </div>
+  <div class="col-md-12">
+    <div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Orders average amount
+		    	<i class="has-popover glyphicon glyphicon-info-sign pull-right" data-toggle="tooltip" data-placement="bottom" title="Orders average amount history based on total price"></i></h3>
+		  </div>
+		  <div class="panel-body">
+		    <%= line_chart @orders_avg_price %>
+		  </div>
+		</div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Orders by source
+		    	<i class="has-popover glyphicon glyphicon-info-sign pull-right" data-toggle="tooltip" data-placement="bottom" title="Orders count by source"></i></h3>
+		  </div>
+		  <div class="panel-body">
+		    <%= column_chart @sources %>
+		  </div>
+		</div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Coupons count
+		    	<i class="has-popover glyphicon glyphicon-info-sign pull-right" data-toggle="tooltip" data-placement="bottom" title="Coupons code history"></i></h3>
+		  </div>
+		  <div class="panel-body">
+		    <%= column_chart @coupons %>
+		  </div>
+		</div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Products count
+		    	<i class="has-popover glyphicon glyphicon-info-sign pull-right" data-toggle="tooltip" data-placement="bottom" title="Orders products count"></i></h3>
+		  </div>
+		  <div class="panel-body">
+		    <%= column_chart @products_count %>
+		  </div>
+		</div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Top 10 clients
+		    	<i class="has-popover glyphicon glyphicon-info-sign pull-right" data-toggle="tooltip" data-placement="bottom" title="Top 10 clients based on orders count (not orders price)"></i></h3>
+		  </div>
+		  <div class="panel-body">
+		    <%= bar_chart @top_clients %>
+		  </div>
+		</div>
+  </div>
+</div>

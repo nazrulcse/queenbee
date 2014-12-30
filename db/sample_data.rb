@@ -41,6 +41,7 @@ orders = []
                       city: ['Paris', 'Monaco', 'Troyes', 'Nancy', 'Lyon', 'Valcourt', 'Tokyo'].sample,
                       url: "http://domain.com/orders/#{x}",
                       client_email: "client#{(1..20).to_a.sample}@email.com",
+                      source: ['website', 'POS', 'store A', 'store B', 'referral'].sample,
                       products_count: (1..10).to_a.sample,
                       application_id: (1..3).to_a.sample
                      )
