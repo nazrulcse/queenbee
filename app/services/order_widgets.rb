@@ -69,7 +69,7 @@ class OrderWidgets
 	end
 
 	def products_average
-		orders.average(:products_count)
+		orders.average(:products_count) || 0
 	end
 
 	def sources
