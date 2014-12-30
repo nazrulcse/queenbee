@@ -2,11 +2,11 @@
   <div class="col-md-3">
     <div class="panel panel-default">
 		  <div class="panel-heading">
-		    <h3 class="panel-title">Total
-		    	<i class="has-popover glyphicon glyphicon-info-sign pull-right" data-toggle="tooltip" data-placement="bottom" title="Total amount received"></i></h3>
+		    <h3 class="panel-title">Total revenue
+		    	<i class="has-popover glyphicon glyphicon-info-sign pull-right" data-toggle="tooltip" data-placement="bottom" title="Total revenue received"></i></h3>
 		  </div>
 		  <div class="panel-body">
-		    <h2><%= number_to_currency(@total_price) %></h2>
+		    <h2><%= number_to_currency(@total_revenue) %></h2>
 		  </div>
 		</div>
   </div>
@@ -24,8 +24,8 @@
 	<div class="col-md-3">
     <div class="panel panel-default">
 		  <div class="panel-heading">
-		    <h3 class="panel-title">Average order price
-		    <i class="has-popover glyphicon glyphicon-info-sign pull-right" data-toggle="tooltip" data-placement="bottom" title="Average order amount based on total price"></i></h3>
+		    <h3 class="panel-title">Average amount
+		    <i class="has-popover glyphicon glyphicon-info-sign pull-right" data-toggle="tooltip" data-placement="bottom" title="Orders average price based on total price"></i></h3>
 		  </div>
 		  <div class="panel-body">
 		    <h2><%= number_to_currency(@avg_order) %></h2>
