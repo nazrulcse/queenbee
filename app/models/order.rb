@@ -68,21 +68,21 @@ class Order < ActiveRecord::Base
 
   private
 
-    def format_fields
-      self.currency     = currency.present? ? currency.downcase : application.try(:default_currency)
-    	self.country      = country.downcase if country
-    	self.city         = city.downcase if city
-      self.client_email = client_email.downcase if client_email
-      self.week_day     = date.to_date.cwday if date
-      self.month_day    = date.day if date
-      self.hour         = date.to_time.hour if date
-    end
+  def format_fields
+    self.currency     = currency.present? ? currency.downcase : application.try(:default_currency)
+  	self.country      = country.downcase if country
+  	self.city         = city.downcase if city
+    self.client_email = client_email.downcase if client_email
+    self.week_day     = date.to_date.cwday if date
+    self.month_day    = date.day if date
+    self.hour         = date.to_time.hour if date
+  end
 
-    def sync_keywords
-      keywords = []
-      keywords << self.date.strftime("%d/%m/%Y")
-      keywords << self.application.name.downcase.to_s
-      self.keywords = keywords.join(", ")
-    end
+  def sync_keywords
+    keywords = []
+    keywords << self.date.strftime("%d/%m/%Y")
+    keywords << self.application.name.downcase.to_s
+    self.keywords = keywords.join(", ")
+  end
 
 end

@@ -80,16 +80,16 @@ class ApplicationsController < BaseController
 
   private
 
-    def set_locale
-      I18n.locale = @application.locale || I18n.default_locale
-    end
+  def set_locale
+    I18n.locale = @application.locale || I18n.default_locale
+  end
 
-    def set_application
-    	@application = Application.includes(:orders).find(params[:id])
-    end
+  def set_application
+  	@application = Application.includes(:orders).find(params[:id])
+  end
 
-    def safe_params
-    	params.require(:application).permit(:name, :locale, :subscription_based)
-    end
+  def safe_params
+  	params.require(:application).permit(:name, :locale, :subscription_based)
+  end
 
 end

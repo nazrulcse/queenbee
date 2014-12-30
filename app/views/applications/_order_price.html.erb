@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Min. order price
+		    	<i class="has-popover glyphicon glyphicon-info-sign pull-right" data-toggle="tooltip" data-placement="bottom" title="Minimum total price across all orders"></i></h3>
+		  </div>
+		  <div class="panel-body">
+		    <h2><%= number_to_currency(@min_order) %></h2>
+		  </div>
+		</div>
+  </div>
+	<div class="col-md-4">
+    <div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Average order price
+		    <i class="has-popover glyphicon glyphicon-info-sign pull-right" data-toggle="tooltip" data-placement="bottom" title="Average total price across all orders"></i></h3>
+		  </div>
+		  <div class="panel-body">
+		    <h2><%= number_to_currency(@avg_order) %></h2>
+		  </div>
+		</div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Max. order price
+		    <i class="has-popover glyphicon glyphicon-info-sign pull-right" data-toggle="tooltip" data-placement="bottom" title="Maximum total price across all orders"></i></h3>
+		  </div>
+		  <div class="panel-body">
+		    <h2><%= number_to_currency(@max_order) %></h2>
+		  </div>
+		</div>
+  </div>
+</div>
