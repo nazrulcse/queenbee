@@ -33,7 +33,7 @@ class Order < ActiveRecord::Base
   validates_presence_of :uid, :date, :amount, :shipping, :total_price, :country,
    	                    :city, :client_email
   validates_presence_of :currency, unless: Proc.new{ |o| o.application.locale.present? }
-  # validates_uniqueness_of :uid, scope: :application_id
+  validates_uniqueness_of :uid, scope: :application_id
 
 
   # CALLBACKS
@@ -84,5 +84,4 @@ class Order < ActiveRecord::Base
     keywords << self.application.name.downcase.to_s
     self.keywords = keywords.join(", ")
   end
-
 end
