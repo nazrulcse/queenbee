@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140831003726) do
+ActiveRecord::Schema.define(version: 20150824182034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,17 +34,17 @@ ActiveRecord::Schema.define(version: 20140831003726) do
     t.string   "uid"
     t.datetime "date"
     t.string   "currency"
-    t.decimal  "amount",         precision: 11, scale: 2, default: 0.0
-    t.decimal  "shipping",       precision: 11, scale: 2, default: 0.0
-    t.decimal  "total_price",    precision: 11, scale: 2, default: 0.0
-    t.boolean  "gift",                                    default: false
-    t.boolean  "coupon",                                  default: false
+    t.decimal  "amount",          precision: 11, scale: 2, default: 0.0
+    t.decimal  "shipping",        precision: 11, scale: 2, default: 0.0
+    t.decimal  "total_price",     precision: 11, scale: 2, default: 0.0
+    t.boolean  "gift",                                     default: false
+    t.boolean  "coupon",                                   default: false
     t.string   "coupon_code"
     t.string   "country"
     t.string   "city"
     t.string   "url"
     t.string   "client_email"
-    t.integer  "products_count",                          default: 1
+    t.integer  "products_count",                           default: 1
     t.integer  "application_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -52,8 +52,10 @@ ActiveRecord::Schema.define(version: 20140831003726) do
     t.integer  "week_day"
     t.integer  "month_day"
     t.integer  "hour"
-    t.decimal  "tax",            precision: 11, scale: 2, default: 0.0
+    t.decimal  "tax",             precision: 11, scale: 2, default: 0.0
     t.string   "source"
+    t.datetime "subscribed_at"
+    t.datetime "unsubscribed_at"
   end
 
   add_index "orders", ["application_id", "source"], name: "index_orders_on_application_id_and_source", using: :btree

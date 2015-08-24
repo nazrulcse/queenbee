@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: 'json'} do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
+      resources :applications, only: [:index, :show]
       resources :orders, only: [:index, :show, :create] do
       	get :search, on: :collection
       end

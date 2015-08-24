@@ -1,4 +1,6 @@
-<p><%= link_to "New app.", new_application_path, class: 'btn btn-default pull-right' %></p>
+<%= page_title 'Applications' do %>
+  <%= link_to "New application", new_application_path, class: 'btn btn-default pull-right' %>
+<% end %>
 
 <table class="table table-light">
   <thead>

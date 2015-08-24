@@ -1,7 +1,7 @@
 class OrdersController < BaseController
 
   def index
-    @applications = Application.order('name')
+    @applications = Application.active.order('name')
   	if params[:query].present?
   		@orders = Order.search_by_keyword(params[:query]).limit(20)
     else

@@ -36,7 +36,8 @@ module Api
         def safe_params
           params.require(:order).permit(:uid, :client_email, :country, :city, :products_count,
                                         :date, :currency, :amount, :shipping, :total_price, :gift,
-                                        :coupon, :coupon_code, :url, :tax, :source)
+                                        :coupon, :coupon_code, :url, :tax, :source, :subscribed_at,
+                                        :unsubscribed_at)
         end
 
     end

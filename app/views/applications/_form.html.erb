@@ -8,7 +8,15 @@
       <%= f.input :locale, collection: ApplicationHelper::CURRENCIES_SUPPORTED %>
     </div>
   </div>
-  <%= f.collection_radio_buttons :subscription_based, [[true, 'Subscription-based (recurring revenues)'], [false, 'Classic e-commerce store']], :first, :last, item_wrapper_class: 'radio' %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.input :subscription_based, as: :radio_buttons, collection: [['Subscription-based (recurring revenue)', true], ['Classic e-commerce store', false]] %>
+    </div>
+    <div class="col-md-6">
+      <%= f.input :active, as: :radio_buttons %>
+    </div>
+  </div>
+
 	<div class="form-actions">
     <%= f.button :submit, class: 'btn btn-success' %>
 	</div>

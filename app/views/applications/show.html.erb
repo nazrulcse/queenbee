@@ -3,7 +3,7 @@
   <%= link_to 'Edit', edit_application_path(@application), class: 'btn btn-link pull-right' %>
 <% end %>
 
-<p class="tright">
+<p class="text-right">
   <small>
     <%= link_to 'Today', application_path(@application, start_date: Date.today, end_date: Date.today) %>
     <%= link_to '7d', application_path(@application, start_date: 7.days.ago.to_date, end_date: Date.today) %>
