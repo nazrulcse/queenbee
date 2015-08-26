@@ -12,6 +12,13 @@ module Api
       # curl http://localhost:3010/api/applications/:id -H 'Authorization: Token token="111"'
       def show
         @application = Application.find(params[:id])
+
+        # To use caching storage such as memcached
+        # https://devcenter.heroku.com/articles/rack-cache-memcached-rails31
+        # http://railscasts.com/episodes/380-memcached-dalli
+        # if stale?(@application)
+        #   render json: @application
+        # end
       end
 
       private
