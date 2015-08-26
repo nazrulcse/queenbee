@@ -18,42 +18,42 @@ ActiveRecord::Schema.define(version: 20150824182034) do
   enable_extension "unaccent"
 
   create_table "applications", force: :cascade do |t|
-    t.string   "name"
-    t.string   "slug"
-    t.string   "auth_token"
-    t.boolean  "active",             default: true
+    t.string   "name",               limit: 255
+    t.string   "slug",               limit: 255
+    t.string   "auth_token",         limit: 255
+    t.boolean  "active",                         default: true
     t.text     "identicon"
-    t.integer  "orders_count",       default: 0
+    t.integer  "orders_count",                   default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "locale",             default: "en"
-    t.boolean  "subscription_based", default: false
+    t.string   "locale",             limit: 255, default: "en"
+    t.boolean  "subscription_based",             default: false
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string   "uid"
+    t.string   "uid",             limit: 255
     t.datetime "date"
-    t.string   "currency"
-    t.decimal  "amount",          precision: 11, scale: 2, default: 0.0
-    t.decimal  "shipping",        precision: 11, scale: 2, default: 0.0
-    t.decimal  "total_price",     precision: 11, scale: 2, default: 0.0
-    t.boolean  "gift",                                     default: false
-    t.boolean  "coupon",                                   default: false
-    t.string   "coupon_code"
-    t.string   "country"
-    t.string   "city"
-    t.string   "url"
-    t.string   "client_email"
-    t.integer  "products_count",                           default: 1
+    t.string   "currency",        limit: 255
+    t.decimal  "amount",                      precision: 11, scale: 2, default: 0.0
+    t.decimal  "shipping",                    precision: 11, scale: 2, default: 0.0
+    t.decimal  "total_price",                 precision: 11, scale: 2, default: 0.0
+    t.boolean  "gift",                                                 default: false
+    t.boolean  "coupon",                                               default: false
+    t.string   "coupon_code",     limit: 255
+    t.string   "country",         limit: 255
+    t.string   "city",            limit: 255
+    t.string   "url",             limit: 255
+    t.string   "client_email",    limit: 255
+    t.integer  "products_count",                                       default: 1
     t.integer  "application_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "keywords"
+    t.string   "keywords",        limit: 255
     t.integer  "week_day"
     t.integer  "month_day"
     t.integer  "hour"
-    t.decimal  "tax",             precision: 11, scale: 2, default: 0.0
-    t.string   "source"
+    t.decimal  "tax",                         precision: 11, scale: 2, default: 0.0
+    t.string   "source",          limit: 255
     t.datetime "subscribed_at"
     t.datetime "unsubscribed_at"
   end
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20150824182034) do
   create_table "pg_search_documents", force: :cascade do |t|
     t.text     "content"
     t.integer  "searchable_id"
-    t.string   "searchable_type"
+    t.string   "searchable_type", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end

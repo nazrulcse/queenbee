@@ -26,8 +26,8 @@ module Api
         if @order.save
           render json: @order, status: :created
         else
-          render json: @order.errors, status: 422
-          puts "**** #{@order.errors.full_messages.to_sentence} ****"
+          render json: @order.errors.full_messages.to_sentence, status: 422
+          # puts "**** #{@order.errors.full_messages.to_sentence} ****"
         end
       end
 

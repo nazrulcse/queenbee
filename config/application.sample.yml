@@ -1,0 +1,8 @@
+DOMAIN: "http://localhost:3024"
+HOST: "localhost:3024"
+SMTP_HOST: "smtp.mandrillapp.com"
+SMTP_PORT: "587"
+SMTP_USERNAME: ""
+SMTP_PASSWORD: ""
+DEFAULT_EMAIL_SENDER: "app@domain.com"
+ADMIN_EMAIL: "alert@domain.com"

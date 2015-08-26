@@ -32,6 +32,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'thin'
 gem 'simple_form', '~> 3.1.0'
+gem 'figaro', '~> 1.1.0', github: 'laserlemon/figaro'
 gem 'pg_search', '~> 0.7.8'
 gem 'activerecord-import', '~> 0.4.0'
 gem 'hirb'
@@ -58,5 +59,5 @@ end
 group :production do
   gem 'unicorn'
   gem 'rails_12factor'
+  gem 'exception_notification', '~> 4.0'
 end
-

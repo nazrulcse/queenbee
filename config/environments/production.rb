@@ -73,4 +73,25 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  Rails.application.routes.default_url_options[:host] = ENV['DOMAIN']
+
+  config.action_mailer.default_url_options = { host: ENV['DOMAIN'] }
+  config.action_mailer.asset_host = ENV['HOST']
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    :address              => ENV['SMTP_HOST'],
+    :port                 => ENV['SMTP_PORT'],
+    :user_name            => ENV['SMTP_USERNAME'],
+    :password             => ENV['SMTP_PASSWORD']
+  }
+
+  # Exceptions handling
+  config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix         => "[Exception] ",
+    :sender_address       => %{"[Queenbee] Exception Notifier" <#{ENV['DEFAULT_EMAIL_SENDER']}>},
+    :exception_recipients => ENV['ADMIN_EMAIL']
+  }
 end

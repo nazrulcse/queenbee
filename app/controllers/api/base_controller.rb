@@ -1,5 +1,6 @@
 class Api::BaseController < ApplicationController
-  # before_action :restrict_access
+  protect_from_forgery with: :null_session
+  before_action :restrict_access
 
   private
 
