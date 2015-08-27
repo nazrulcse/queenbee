@@ -1,4 +1,4 @@
-class UpdateCoreStats
+class CoreMetrics
   # Philosophy:
   # generating stats is resource-intensive
   # therefore need to optimize queries and responses.
@@ -9,43 +9,25 @@ class UpdateCoreStats
   # however the rails-way is to expire cache
   # need to leverage order_widgets as well
 
+  # CoreMetrics.new(Application.first).process
   def initialize(application)
     @application = application
     @orders      = application.orders
   end
 
   def process
-    @application.metrics["orders_count"] = count_of_orders
+    service = Metrics::Base.new(@orders)
+    @application.metrics["orders_count"]   = service.orders_count
+    @application.metrics["orders_revenue"] = service.orders_revenue
+    @application.metrics["orders_min_price"] = service.orders_min_price
+    @application.metrics["orders_max_price"] = service.orders_min_price
+    @application.metrics["orders_average_price"] = service.orders_avg_price
+    # @application.metrics["orders_revenue"] = total_revenue
     @application.save!
-  end
-
-  def count_of_orders
-    # group orders
-    today, this_week, last_week, this_month, last_month, total =
-      split_by_time_period(@orders)
-
-    # build hash
-    {
-      today: today.length,
-      this_week: 25,
-      last_week: 30,
-      this_month:
-      last_month: 50,
-      total: 75
-    }
   end
 
   def total_revenue
 
   end
-
-  private
-
-    def split_by_time_period(serie)
-      today = serie.group_by_day(Date.today)
-
-      return today
-    end
-
 
 end

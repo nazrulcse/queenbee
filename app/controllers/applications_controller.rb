@@ -53,6 +53,11 @@ class ApplicationsController < BaseController
 
     # Recent orders
     @orders = @application.orders.order('date DESC').limit(20)
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @application, location: api_application_url(@application) }
+    end
   end
 
   def create

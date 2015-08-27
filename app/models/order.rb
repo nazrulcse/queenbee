@@ -26,6 +26,8 @@ class Order < ActiveRecord::Base
   scope :within_period, -> (from, to) { where(date: (from..to)) }
   scope :from_date,     -> (from)     { where("date >= ?", from) }
   scope :to_date,       -> (to)       { where("date <= ?", to) }
+  scope :recurring,     -> { where.not(subscribed_at: nil) }
+  scope :unsubscrined,  -> { where.not(unsubscribed_at: nil) }
 
 
   # VALIDATIONS
