@@ -6,16 +6,16 @@ module Metrics
       @orders     = orders
       today       = Date.today
       @today      = group_orders(orders, today, today)
-      @yesterday  = group_orders(orders, today-1, today-1)
+      @yesterday  = group_orders(orders, today - 1, today - 1)
 
       @this_week  = group_orders(orders, today.beginning_of_week, today)
-      @last_week  = group_orders(orders, today.beginning_of_week-7, today.end_of_week-7)
+      @last_week  = group_orders(orders, today.beginning_of_week - 7, today.end_of_week - 7)
 
       @this_month = group_orders(orders, today.beginning_of_month, today)
-      @last_month = group_orders(orders, today.beginning_of_month-1.month, today.end_of_month-1.month)
+      @last_month = group_orders(orders, today.beginning_of_month - 1.month, today.end_of_month - 1.month)
 
       @this_year  = group_orders(orders, today.beginning_of_year, today)
-      @last_year  = group_orders(orders, today.beginning_of_year-1.year, today.end_of_year-1.year)
+      @last_year  = group_orders(orders, today.beginning_of_year - 1.year, today.end_of_year - 1.year)
 
       @total      = orders
     end

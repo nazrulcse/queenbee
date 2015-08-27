@@ -22,12 +22,7 @@ class CoreMetrics
     @application.metrics["orders_min_price"] = service.orders_min_price
     @application.metrics["orders_max_price"] = service.orders_min_price
     @application.metrics["orders_average_price"] = service.orders_avg_price
-    # @application.metrics["orders_revenue"] = total_revenue
     @application.save!
-  end
-
-  def total_revenue
-
   end
 
 end
