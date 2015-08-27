@@ -1,4 +1,4 @@
-# Queen Bee
+# QueenBee
 
 **Getting started**
 
