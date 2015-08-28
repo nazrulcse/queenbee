@@ -17,11 +17,15 @@ class CoreMetrics
 
   def process
     service = Metrics::Base.new(@orders)
-    @application.metrics["orders_count"]   = service.orders_count
-    @application.metrics["orders_revenue"] = service.orders_revenue
-    @application.metrics["orders_min_price"] = service.orders_min_price
-    @application.metrics["orders_max_price"] = service.orders_min_price
-    @application.metrics["orders_average_price"] = service.orders_avg_price
+    @application.metrics["orders_count"]     = service.orders_count
+    @application.metrics["net_revenue"]      = service.net_revenue
+    @application.metrics["min_amount"]       = service.min_amount
+    @application.metrics["max_amount"]       = service.max_amount
+    @application.metrics["average_amount"]   = service.avg_amount
+    # @application.metrics["total_fees"]     = service.total_fees
+    @application.metrics["active_customers"] = service.active_customers
+    # @application.metrics["cancellations"]    = service.cancellations
+
     @application.save!
   end
 
