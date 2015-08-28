@@ -36,7 +36,7 @@ class Order < ActiveRecord::Base
   validates_presence_of :uid, :date, :amount, :shipping, :total_price, :country,
    	                    :city, :client_email
   validates_presence_of :currency, unless: Proc.new{ |o| o.application.locale.present? }
-  validates_uniqueness_of :uid, scope: :application_id
+  # validates_uniqueness_of :uid, scope: :application_id
 
 
   # CALLBACKS
@@ -80,6 +80,7 @@ class Order < ActiveRecord::Base
       self.week_day     = date.to_date.cwday if date
       self.month_day    = date.day if date
       self.hour         = date.to_time.hour if date
+      self.uid          = uid.strip if uid
     end
 
     def sync_keywords
