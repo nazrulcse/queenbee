@@ -66,6 +66,7 @@ class ApplicationsController < BaseController
 
     respond_to do |format|
       if @application.save
+        CoreMetrics.new(@application).process
         format.html { redirect_to applications_url, notice: 'Application was successfully created.' }
         format.json { render :show, status: :created, location: @application }
       else
