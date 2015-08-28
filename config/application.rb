@@ -43,7 +43,7 @@ module QueenBee
     config.middleware.use Rack::Cors do
       allow do
         origins '*'
-        resource '/api/*', headers: :any, methods: [:get, :post, :options]
+        resource '/api/*', headers: :any, methods: [:get, :post, :put, :patch, :options]
       end
     end
 

@@ -14,14 +14,13 @@ class ApplicationsController < BaseController
   end
 
   def show
-    # let's define orders time period
+    # let's define time period for orders
     start_date = params[:start_date] || 7.days.ago
     end_date   = params[:end_date] || Time.zone.now
 
     # Initialize service
     service = OrderWidgets.new(@application, start_date, end_date)
     @orders = service.orders
-    puts "**** found #{@orders.length} orders ****"
 
     # Widgets
     ## Simple stats
@@ -33,6 +32,7 @@ class ApplicationsController < BaseController
     @max_order     = service.max_price
   	@avg_order     = service.average_price
     @products_avg  = service.products_average
+    @referral      = service.referral
 
     ## Graphs
     @revenue           = service.revenue
@@ -46,6 +46,7 @@ class ApplicationsController < BaseController
     @top_clients       = service.top_clients
     @top_countries     = service.top_countries
     @top_cities        = service.top_cities
+    @referrals         = service.referral
 
     if @application.subscription_based?
       # render SaaS-specific stats.

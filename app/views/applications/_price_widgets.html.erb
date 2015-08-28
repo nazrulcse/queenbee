@@ -2,8 +2,8 @@
   <div class="col-md-3">
     <div class="panel panel-default">
 		  <div class="panel-heading">
-		    <h3 class="panel-title">Total revenue
-		    	<i class="has-popover glyphicon glyphicon-info-sign pull-right" data-toggle="tooltip" data-placement="bottom" title="Total revenue received"></i></h3>
+		    <h3 class="panel-title">Net Revenue
+		    	<i class="has-popover glyphicon glyphicon-info-sign pull-right" data-toggle="tooltip" data-placement="bottom" title="Gross Volume (Recurring and Non-recurring)"></i></h3>
 		  </div>
 		  <div class="panel-body">
 		    <h2><%= number_to_currency(@total_revenue) %></h2>
@@ -13,8 +13,8 @@
   <div class="col-md-3">
     <div class="panel panel-default">
 		  <div class="panel-heading">
-		    <h3 class="panel-title">Min. order price
-		    	<i class="has-popover glyphicon glyphicon-info-sign pull-right" data-toggle="tooltip" data-placement="bottom" title="Lowest order amount based on total price"></i></h3>
+		    <h3 class="panel-title">Min. Amount
+		    	<i class="has-popover glyphicon glyphicon-info-sign pull-right" data-toggle="tooltip" data-placement="bottom" title="Lowest amount based on total price"></i></h3>
 		  </div>
 		  <div class="panel-body">
 		    <h2><%= number_to_currency(@min_order) %></h2>
@@ -24,8 +24,8 @@
 	<div class="col-md-3">
     <div class="panel panel-default">
 		  <div class="panel-heading">
-		    <h3 class="panel-title">Average amount
-		    <i class="has-popover glyphicon glyphicon-info-sign pull-right" data-toggle="tooltip" data-placement="bottom" title="Orders average price based on total price"></i></h3>
+		    <h3 class="panel-title">Average Amount
+		    <i class="has-popover glyphicon glyphicon-info-sign pull-right" data-toggle="tooltip" data-placement="bottom" title="Average amount based on total price"></i></h3>
 		  </div>
 		  <div class="panel-body">
 		    <h2><%= number_to_currency(@avg_order) %></h2>
@@ -35,8 +35,8 @@
   <div class="col-md-3">
     <div class="panel panel-default">
 		  <div class="panel-heading">
-		    <h3 class="panel-title">Max. order price
-		    <i class="has-popover glyphicon glyphicon-info-sign pull-right" data-toggle="tooltip" data-placement="bottom" title="Highest order amount based on total price"></i></h3>
+		    <h3 class="panel-title">Max. Amount
+		    <i class="has-popover glyphicon glyphicon-info-sign pull-right" data-toggle="tooltip" data-placement="bottom" title="Highest amount based on total price"></i></h3>
 		  </div>
 		  <div class="panel-body">
 		    <h2><%= number_to_currency(@max_order) %></h2>

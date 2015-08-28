@@ -96,6 +96,14 @@ class OrderWidgets
 		end
 	end
 
+  def referral
+  	orders.with_referral.length
+  end
+
+	def referrals
+		orders.group(:referral).limit(10).count
+	end
+
 	# To get a specific time range, use:
   # User.group_by_day(:created_at, range: 2.weeks.ago.midnight..Time.now).count
 

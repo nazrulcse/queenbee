@@ -28,6 +28,7 @@ class Order < ActiveRecord::Base
   scope :to_date,       -> (to)       { where("date <= ?", to) }
   scope :recurring,     -> { where.not(subscribed_at: nil) }
   scope :unsubscribed,  -> { where.not(unsubscribed_at: nil) }
+  scope :with_referral, -> { where.not(referral: nil) }
 
 
   # VALIDATIONS
@@ -41,6 +42,7 @@ class Order < ActiveRecord::Base
   # CALLBACKS
   # ------------------------------------------------------------------------------------------------------
   before_save :format_fields, :sync_keywords
+  after_save :sync_metrics
 
 
   # INSTANCE METHODS
@@ -70,20 +72,24 @@ class Order < ActiveRecord::Base
 
   private
 
-  def format_fields
-    self.currency     = currency.present? ? currency.downcase : application.try(:default_currency)
-  	self.country      = country.downcase if country
-  	self.city         = city.downcase if city
-    self.client_email = client_email.downcase if client_email
-    self.week_day     = date.to_date.cwday if date
-    self.month_day    = date.day if date
-    self.hour         = date.to_time.hour if date
-  end
+    def format_fields
+      self.currency     = currency.present? ? currency.downcase : application.try(:default_currency)
+    	self.country      = country.downcase if country
+    	self.city         = city.downcase if city
+      self.client_email = client_email.downcase.strip if client_email
+      self.week_day     = date.to_date.cwday if date
+      self.month_day    = date.day if date
+      self.hour         = date.to_time.hour if date
+    end
 
-  def sync_keywords
-    keywords = []
-    keywords << self.date.strftime("%d/%m/%Y")
-    keywords << self.application.name.downcase.to_s
-    self.keywords = keywords.join(", ")
-  end
+    def sync_keywords
+      keywords = []
+      keywords << self.date.strftime("%d/%m/%Y")
+      keywords << self.application.name.downcase.to_s
+      self.keywords = keywords.join(", ")
+    end
+
+    def sync_metrics
+      CoreMetrics.new(application).process
+    end
 end

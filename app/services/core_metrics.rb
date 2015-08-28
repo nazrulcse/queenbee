@@ -22,7 +22,7 @@ class CoreMetrics
     @application.metrics["min_amount"]       = service.min_amount
     @application.metrics["max_amount"]       = service.max_amount
     @application.metrics["average_amount"]   = service.avg_amount
-    # @application.metrics["total_fees"]     = service.total_fees
+    @application.metrics["total_fees"]       = service.total_fees
     @application.metrics["active_customers"] = service.active_customers
     # @application.metrics["cancellations"]    = service.cancellations
 
