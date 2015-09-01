@@ -2,20 +2,20 @@ module Metrics
 
   # Metrics::Base.new(Application.first.orders)
   class Base
-    def initialize(orders)
+    def initialize(orders, opts = {})
       @orders     = orders
       today       = Date.today
-      @today      = group_orders(orders, today, today)
-      @yesterday  = group_orders(orders, today - 1, today - 1)
+      @today      = group_orders(orders, today, today, opts[:group_by])
+      @yesterday  = group_orders(orders, today - 1.day, today - 1.day, opts[:group_by])
 
-      @this_week  = group_orders(orders, today.beginning_of_week, today)
-      @last_week  = group_orders(orders, today.beginning_of_week - 7, today.end_of_week - 7)
+      @this_week  = group_orders(orders, today.beginning_of_week, today, opts[:group_by])
+      @last_week  = group_orders(orders, today.beginning_of_week - 7.days, today.end_of_week - 7.days, opts[:group_by])
 
-      @this_month = group_orders(orders, today.beginning_of_month, today)
-      @last_month = group_orders(orders, today.beginning_of_month - 1.month, today.end_of_month - 1.month)
+      @this_month = group_orders(orders, today.beginning_of_month, today, opts[:group_by])
+      @last_month = group_orders(orders, today.beginning_of_month - 1.month, today.end_of_month - 1.month, opts[:group_by])
 
-      @this_year  = group_orders(orders, today.beginning_of_year, today)
-      @last_year  = group_orders(orders, today.beginning_of_year - 1.year, today.end_of_year - 1.year)
+      @this_year  = group_orders(orders, today.beginning_of_year, today, opts[:group_by])
+      @last_year  = group_orders(orders, today.beginning_of_year - 1.year, today.end_of_year - 1.year, opts[:group_by])
 
       @total      = orders
     end
@@ -95,32 +95,6 @@ module Metrics
                last_month, this_year, last_year, total)
     end
 
-    def user_churn
-    end
-
-    def mrr
-    end
-
-    def arr
-      # mrr * 12
-    end
-
-    def cancellations
-      # must group by :unsubscribed_at ad not date
-      today      = @today.unsubscribed.length
-      yesterday  = @yesterday.unsubscribed.length
-      this_week  = @this_week.unsubscribed.length
-      last_week  = @last_week.unsubscribed.length
-      this_month = @this_month.unsubscribed.length
-      last_month = @last_month.unsubscribed.length
-      this_year  = @this_year.unsubscribed.length
-      last_year  = @last_year.unsubscribed.length
-      total      = @total.unsubscribed.length
-
-      decorate(today, yesterday, this_week, last_week, this_month,
-               last_month, this_year, last_year, total)
-    end
-
     def total_fees
       today      = round @today.sum(:fees)
       yesterday  = round @yesterday.sum(:fees)
@@ -136,49 +110,56 @@ module Metrics
                last_month, this_year, last_year, total)
     end
 
-    def active_customers
-      today      = @today.recurring.length
-      yesterday  = @yesterday.recurring.length
-      this_week  = @this_week.recurring.length
-      last_week  = @last_week.recurring.length
-      this_month = @this_month.recurring.length
-      last_month = @last_month.recurring.length
-      this_year  = @this_year.recurring.length
-      last_year  = @last_year.recurring.length
-      total      = @total.recurring.length
-
-      decorate(today, yesterday, this_week, last_week, this_month,
-               last_month, this_year, last_year, total)
-    end
-
     private
 
       def group_orders(serie,
                        start_date = start_date || 7.days.ago,
-                       end_date   = end_date   || Time.zone.now)
+                       end_date   = end_date   || Time.zone.now,
+                       group_by   = 'date' )
         @start_date = start_date.to_time.midnight
         @end_date   = end_date.to_time.end_of_day
 
-        serie.where(date: @start_date..@end_date)
+        if group_by == 'unsubscribed_at'
+          serie.where(unsubscribed_at: @start_date..@end_date)
+        elsif group_by == 'subscribed_at'
+          serie.where(subscribed_at: @start_date..@end_date)
+        else
+          serie.where(date: @start_date..@end_date)
+        end
       end
 
       def decorate(today, yesterday, this_week, last_week, this_month,
                    last_month, this_year, last_year, total)
+
+        args = method(__method__).parameters.map { |arg| arg[1] }
+        args.each do |arg|
+          arg.nil? ? 0 : arg
+          # puts arg if arg.nil?
+        end
+
         {
-          today:      today,
-          yesterday:  yesterday,
-          this_week:  this_week,
-          last_week:  last_week,
-          this_month: this_month,
-          last_month: last_month,
-          this_year:  this_year,
-          last_year:  last_year,
-          total:      total
+          today:      { value: today, percentage_change: percentage_change(yesterday, today) },
+          yesterday:  { value: yesterday },
+          this_week:  { value: this_week, percentage_change: percentage_change(last_week, this_week) },
+          last_week:  { value: last_week },
+          this_month: { value: this_month, percentage_change: percentage_change(last_month, this_month) },
+          last_month: { value: last_month },
+          this_year:  { value: this_year, percentage_change: percentage_change(last_year, this_year) },
+          last_year:  { value: last_year },
+          total:      { value: total }
         }
       end
 
       def round(number)
         number.nil? ? nil : number.round(2)
+      end
+
+      def percentage_change(old_value, new_value)
+        if !old_value.nil? && !new_value.nil?
+          unless old_value == 0
+            round( (new_value - old_value) / old_value.to_f * 100 )
+          end
+        end
       end
 
   end

@@ -10,26 +10,24 @@
     <p>This month:</p>
     <p>Year to date:</p>
 	</div>
-  <%= cache do %>
-    <% @applications.each do |app| %>
-      <div class="col-xs-6 col-sm-6 col-md-2">
-        <h6>
-          <%= link_to app.name.upcase, application_path(app) %>
-        </h6>
-        <p>
-          <%= number_to_currency(app.metrics["net_revenue"]["today"], locale: app.locale) %> <small>(<%= app.metrics["orders_count"]["today"] %>)</small>
-        </p>
-        <p>
-          <%= number_to_currency(app.metrics["net_revenue"]["this_week"], locale: app.locale) %> <small>(<%= app.metrics["orders_count"]["this_week"] %>)</small>
-        </p>
-        <p>
-          <%= number_to_currency(app.metrics["net_revenue"]["this_month"], locale: app.locale) %> <small>(<%= app.metrics["orders_count"]["this_month"] %>)</small>
-        </p>
-        <p>
-          <%= number_to_currency(app.metrics["net_revenue"]["this_year"], locale: app.locale) %> <small>(<%= app.metrics["orders_count"]["this_year"] %>)</small>
-        </p>
-      </div>
-    <% end %>
+  <% @applications.each do |app| %>
+    <div class="col-xs-6 col-sm-6 col-md-2">
+      <h6>
+        <%= link_to app.name.upcase, application_path(app) %>
+      </h6>
+      <p>
+        <%= number_to_currency(app.metrics["net_revenue"]["today"]["value"], locale: app.locale) %> <small>(<%= app.metrics["orders_count"]["today"]["value"] %>)</small>
+      </p>
+      <p>
+        <%= number_to_currency(app.metrics["net_revenue"]["this_week"]["value"], locale: app.locale) %> <small>(<%= app.metrics["orders_count"]["this_week"]["value"] %>)</small>
+      </p>
+      <p>
+        <%= number_to_currency(app.metrics["net_revenue"]["this_month"]["value"], locale: app.locale) %> <small>(<%= app.metrics["orders_count"]["this_month"]["value"] %>)</small>
+      </p>
+      <p>
+        <%= number_to_currency(app.metrics["net_revenue"]["this_year"]["value"], locale: app.locale) %> <small>(<%= app.metrics["orders_count"]["this_year"]["value"] %>)</small>
+      </p>
+    </div>
   <% end %>
 </div>
 

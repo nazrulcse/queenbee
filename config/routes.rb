@@ -8,6 +8,9 @@ Rails.application.routes.draw do
       resources :orders, only: [:index, :show, :create, :update] do
       	get :search, on: :collection
       end
+      namespace :metrics do
+        get 'all'
+      end
     end
   end
 
