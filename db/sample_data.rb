@@ -26,7 +26,7 @@ puts "created applications..."
 
 
 orders = []
-9500.times do |i|
+5000.times do |i|
   x = i + 1
   orders << Order.new(uid: "#{x}",
                       date: (1..200).to_a.sample.days.ago,
@@ -41,12 +41,18 @@ orders = []
                       city: ['Paris', 'Monaco', 'Troyes', 'Nancy', 'Lyon', 'Valcourt', 'Tokyo'].sample,
                       url: "http://domain.com/orders/#{x}",
                       client_email: "client#{(1..20).to_a.sample}@email.com",
-                      source: ['website', 'POS', 'store A', 'store B', 'referral'].sample,
+                      #source: ['website', 'POS', 'store A', 'store B', 'referral'].sample,
                       products_count: (1..10).to_a.sample,
+                      # fees: [nil, nil, "3.2", "1.01", "2.21", "2.59", "0.37"].sample,
+                      #   referral: [nil, nil, 'john', 'joe', 'jim', 'mary'].sample,
                       application_id: (1..3).to_a.sample
                      )
 end
 Order.import orders
+
+Application.all.each do |app|
+  CoreMetrics.new(app).process
+end
 puts "created orders..."
 
 puts "All set"
