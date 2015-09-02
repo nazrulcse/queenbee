@@ -8,10 +8,11 @@
   top: 0;
   z-index: 1000;
   margin-top: 50px;
-  padding: 10px 5px;
+  padding: 10px;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  background: $black;
 
   &.push-menu-open {
     right: 0px;
@@ -22,8 +23,8 @@
   }
 
   .event {
-    margin-bottom: 15px;
-    border-bottom: 1px solid #efefef;
+    margin-bottom: 20px;
+    border-bottom: 1px solid $grey-blue;
     line-height: 1.5em;
   }
 }

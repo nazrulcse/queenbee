@@ -56,23 +56,3 @@ $space-4: 4rem;
 .py2 { margin-top: $space-2; margin-bottom: $space-2; }
 .py3 { margin-top: $space-3; margin-bottom: $space-3; }
 .py4 { margin-top: $space-4; margin-bottom: $space-4; }
-
-
-/* Components */
-.label,
-.status { text-transform: uppercase; }
-
-
-/* Colors */
-$red:    #e74c3c;
-$orange: #f39c12;
-$blue:   #3498db;
-$green:  #25ba84;
-$grey:   #333333;
-
-/* Background Colors */
-.bg-primary { background-color: $blue; }
-.bg-info { background-color: $grey; }
-.bg-danger { background-color: $red; }
-.bg-success { background-color: $green; }
-.bg-warning { background-color: $orange; }

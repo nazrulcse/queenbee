@@ -1,9 +1,9 @@
 <%= page_title(@application.name) do %>
   <%= status_tag(@application.orders_count, level: :default) %>
-  <%= link_to 'Edit', edit_application_path(@application), class: 'btn btn-link pull-right' %>
+  <%= link_to 'Edit', edit_application_path(@application), class: 'btn-outline pull-right' %>
 <% end %>
 
-<p class="text-right">
+<p class="text-right nav-links">
   <small>
     <%= link_to 'Today', application_path(@application, start_date: Date.today, end_date: Date.today) %>
     <%= link_to '7d', application_path(@application, start_date: 7.days.ago.to_date, end_date: Date.today) %>

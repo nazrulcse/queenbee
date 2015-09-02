@@ -1,6 +1,13 @@
-<p class="text-right">
-  <%= link_to "Toggle orders", "#", id: 'toggle-push-menu' %>
-</p>
+<%= page_title "Dashboard" %>
+<%= page_section "sales" %>
+
+<div class="row">
+  <div class="col-md-3">
+    <%= widget_graph "Title", "Metric" do %>
+      <small>14</small>
+    <% end %>
+  </div>
+</div>
 
 <div class="row stats">
 	<div class="col-md-2">

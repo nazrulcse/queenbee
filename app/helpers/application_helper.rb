@@ -7,10 +7,9 @@ module ApplicationHelper
     end
   end
 
-  def page_section(title, &block)
-    page_actions = block_given? ? capture(&block) : ''
+  def page_section(title)
     content_tag(:div, class: "page-section") do
-      content_tag(:h4, (title + page_actions).html_safe)
+      content_tag(:h3, title.html_safe)
     end
   end
 

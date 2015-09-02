@@ -1,0 +1,33 @@
+.btn-outline {
+  color: #1997c6;
+  background-color: transparent;
+
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  border-color: #1997c6;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  &:hover {
+    color: #ffffff;
+    background-color: #1997c6;
+    border-color: #1997c6;
+    box-shadow: none;
+    text-decoration: none;
+  }
+}

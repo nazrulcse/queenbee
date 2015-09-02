@@ -1,0 +1,30 @@
+@import "variables";
+
+/* Custom
+* --------------------------------
+*/
+.form-actions { margin: 20px 0; }
+
+
+/* Bootstrap override
+* --------------------------------
+*/
+.form-control {
+  background-color: $grey-blue;
+  background-image: none;
+  border: 1px solid $grey-blue;
+  border-radius: 4px;
+  height: 35px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #ffffff;
+
+  &:focus {
+    color: $blue-navy;
+    background-color: #ffffff;
+    box-shadow: none;
+    border-color: #ffffff;
+    outline: 0;
+  }
+}
