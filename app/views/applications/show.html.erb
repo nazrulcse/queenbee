@@ -1,5 +1,5 @@
 <%= page_title(@application.name) do %>
-  <%= status_tag(@application.orders_count, level: :default) %>
+  <%= status_tag(pluralize(@application.orders_count, 'order'), level: :default) %>
   <%= link_to 'Edit', edit_application_path(@application), class: 'btn-outline pull-right' %>
 <% end %>
 

@@ -1,18 +1,5 @@
 @import 'variables';
 
-/* Panel
-* --------------------------------
-*/
-
-.panel {
-  //border-radius: 0;
-  .panel-body {
-    color: #333;
-
-    h2 { margin: 0; }
-  }
-}
-
 /* Titles
 * --------------------------------
 */
@@ -36,7 +23,6 @@
   margin-top: 20px;
   margin-bottom: 30px;
 
-
   &::before {
     position: absolute;
     top: 50%;
@@ -59,6 +45,51 @@
     padding-right: 1em;
     vertical-align: middle;
     background-color: $blue-navy;
+  }
+
+  /* tabs */
+  ul {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    padding-left: 1em;
+    padding-right: 1em;
+    color: #6f7890;
+    vertical-align: middle;
+    background-color: #252830;
+    margin-top: 0;
+
+    li {
+      float: left;
+      position: relative;
+      display: block;
+
+      a {
+        font-weight: 500;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        font-size: 100%;
+        border-radius: 4px;
+        position: relative;
+        display: block;
+        padding: 7px 15px;
+
+        &:hover {
+          text-decoration: none;
+          background-color: #434857;
+          color: #fff;
+        }
+      }
+    }
+
+    li.active a { background: transparent; }
+
+    li.active > a,
+    li.active > a:hover,
+    li.active > a:focus {
+      color: #252830;
+      background-color: #1ca8dd;
+    }
   }
 }
 
@@ -114,4 +145,22 @@ a {
 
 .table > thead > tr > th {
   border-bottom: 2px solid $grey-blue;
+}
+
+/* Panels
+* --------------------------------
+*/
+.panel-reverse {
+  border: 1px solid $grey-blue;
+  background-color: transparent;
+
+  .panel-heading {
+    border-bottom: 1px solid $grey-blue;
+    color: #fff;
+  }
+  .panel-body {
+    h2 {
+      color: $grey;
+    }
+  }
 }

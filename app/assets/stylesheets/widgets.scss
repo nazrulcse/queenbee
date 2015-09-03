@@ -1,0 +1,38 @@
+@import "variables";
+
+.widget-graph {
+  .widget {
+    .widget-title {
+      font-size: 85%;
+      letter-spacing: .15em;
+      color: #a9aebd;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 0;
+
+      small {
+        padding: .125em .5em;
+        font-size: 50%;
+        vertical-align: middle;
+        display: inline;
+        font-weight: bold;
+        line-height: 1;
+        color: $blue-navy;
+        text-align: center;
+        white-space: nowrap;
+        border-radius: .25em;
+
+        &.positive { background-color: $green; }
+        &.negative { background-color: $red; }
+      }
+    }
+
+    canvas {
+      width: 358px;
+      height: 89px;
+    }
+  }
+}

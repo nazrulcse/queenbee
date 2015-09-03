@@ -25,7 +25,7 @@ body {
 .footer {
 	padding-top: 19px;
   color: #777;
-  border-top: 1px solid $brown;
+  border-top: 1px solid $blue-navy;
 
   ul li {
     list-style-type: none;
@@ -37,9 +37,19 @@ body {
   margin-right: 0;
 }
 
+
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: inherit;
   font-weight: 300;
   line-height: 1.1;
+  color: #ffffff;
+}
+
+/* Typography
+* --------------------------------
+*/
+h2 small,
+h3 small {
+  font-weight: 300;
 }
