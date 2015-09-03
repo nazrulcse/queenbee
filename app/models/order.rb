@@ -21,14 +21,15 @@ class Order < ActiveRecord::Base
 
   # SCOPES
   # ------------------------------------------------------------------------------------------------------
-  scope :by_month,      -> (month)    { where("date BETWEEN '#{month.beginning_of_month}' AND '#{month.end_of_month}'") }
-  scope :by_day,        -> (day)      { where("date BETWEEN '#{day.beginning_of_day}' AND '#{day.end_of_day}'") }
-  scope :within_period, -> (from, to) { where(date: (from..to)) }
-  scope :from_date,     -> (from)     { where("date >= ?", from) }
-  scope :to_date,       -> (to)       { where("date <= ?", to) }
-  scope :recurring,     -> { where.not(subscribed_at: nil) }
-  scope :unsubscribed,  -> { where.not(unsubscribed_at: nil) }
-  scope :with_referral, -> { where.not(referral: nil) }
+  scope :by_month,         -> (month)    { where("date BETWEEN '#{month.beginning_of_month}' AND '#{month.end_of_month}'") }
+  scope :by_day,           -> (day)      { where("date BETWEEN '#{day.beginning_of_day}' AND '#{day.end_of_day}'") }
+  scope :within_period,    -> (from, to) { where(date: (from..to)) }
+  scope :from_date,        -> (from)     { where("date >= ?", from) }
+  scope :to_date,          -> (to)       { where("date <= ?", to) }
+  scope :recurring,        -> { where.not(subscribed_at: nil) }
+  scope :recurring_active, -> { where.not(subscribed_at: nil).where(unsubscribed_at: nil) }
+  scope :unsubscribed,     -> { where.not(unsubscribed_at: nil, subscribed_at: nil) }
+  scope :with_referral,    -> { where.not(referral: nil) }
 
 
   # VALIDATIONS
