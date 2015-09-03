@@ -35,8 +35,8 @@ class CoreMetrics
     @application.metrics["mrr"]              = service.mrr
     @application.metrics["arr"]              = service.arr
 
-    service = Metrics::Subscriptions.new(@subscriptions, group_by: "subscribed_at")
-    @application.metrics["churn"] = service.churn
+    # service = Metrics::Subscriptions.new(@subscriptions, group_by: "subscribed_at")
+    # @application.metrics["churn"] = service.churn
 
     @application.save!
   end
