@@ -18,7 +18,7 @@
                 <%= app.name %>
               </span>
               <h2>
-                <%= number_to_currency(serie["value"], locale: app.locale) %>
+                <%= number_to_currency(serie["value"] || 0, locale: app.locale) %>
                 <small class="<%= (serie['percentage_change'].to_f || 0) > 0 ? 'positive' : 'negative' %>"><%= number_to_percentage(serie["percentage_change"] || 0, precision: 2) %></small>
               </h2>
             </div>
@@ -39,7 +39,7 @@
                 <%= app.name %>
               </span>
               <h2>
-                <%= number_to_currency(serie["value"], locale: app.locale) %>
+                <%= number_to_currency(serie["value"] || 0, locale: app.locale) %>
                 <small class="<%= (serie['percentage_change'].to_f || 0) > 0 ? 'positive' : 'negative' %>"><%= number_to_percentage(serie["percentage_change"] || 0, precision: 2) %></small>
               </h2>
             </div>
@@ -60,7 +60,7 @@
                 <%= app.name %>
               </span>
               <h2>
-                <%= number_to_currency(serie["value"], locale: app.locale) %>
+                <%= number_to_currency(serie["value"] || 0, locale: app.locale) %>
                 <small class="<%= (serie['percentage_change'].to_f || 0) > 0 ? 'positive' : 'negative' %>"><%= number_to_percentage(serie["percentage_change"] || 0, precision: 2) %></small>
               </h2>
             </div>
