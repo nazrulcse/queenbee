@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150828165943) do
+ActiveRecord::Schema.define(version: 20150904050546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20150828165943) do
     t.string   "locale",             default: "en"
     t.boolean  "subscription_based", default: false
     t.jsonb    "metrics",            default: {}
+    t.jsonb    "net_revenue",        default: {}
   end
 
   create_table "orders", force: :cascade do |t|
