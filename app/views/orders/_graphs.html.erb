@@ -15,7 +15,7 @@
             <div class="widget">
               <% serie = app.metrics["net_revenue"]["this_week"] %>
               <span class="widget-title">
-                app.name
+                <%= app.name %>
               </span>
               <h2>
                 <%= number_to_currency(serie["value"], locale: app.locale) %>
@@ -36,7 +36,7 @@
             <div class="widget">
               <% serie = app.metrics["net_revenue"]["this_month"] %>
               <span class="widget-title">
-                app.name
+                <%= app.name %>
               </span>
               <h2>
                 <%= number_to_currency(serie["value"], locale: app.locale) %>
@@ -57,7 +57,7 @@
             <div class="widget">
               <% serie = app.metrics["net_revenue"]["this_year"] %>
               <span class="widget-title">
-                app.name
+                <%= app.name %>
               </span>
               <h2>
                 <%= number_to_currency(serie["value"], locale: app.locale) %>
