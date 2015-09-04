@@ -6,12 +6,11 @@ module Api
       respond_to :json
 
       # curl http://localhost:3010/api/orders -H 'Authorization: Token token="111"'
-      # curl http://localhost:3010/api/orders?q=429 -H 'Authorization: Token token="111"'
       def index
-        @orders = @current_application.orders.order('created_at DESC').limit(20)
-        if params[:q].present?
-          @orders = @current_application.orders.search_by_keyword(params[:q])
-        end
+        now = Time.zone.now.beginning_of_day
+        start_date = params[:start_date] || now.beginning_of_day - 7.days
+        end_date   = params[:end_date] || now.end_of_day
+        @orders = @current_application.orders.within_period(start_date, end_date).order('date DESC')
         render json: @orders, status: 200
       end
 

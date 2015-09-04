@@ -8,7 +8,7 @@
         <div class="widget">
           <% serie = app.metrics["net_revenue"]["today"] %>
           <span class="widget-title">
-            app.name
+            <%= app.name %>
           </span>
           <h2>
             <%= number_to_currency(serie["value"], locale: app.locale) %>

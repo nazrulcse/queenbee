@@ -6,7 +6,7 @@ class OrdersController < BaseController
   		@orders = Order.search_by_keyword(params[:query]).limit(20)
     else
       orders = Order.within_period(Date.today.beginning_of_year, Date.today)
-      @orders = orders.order('created_at DESC').limit(20)
+      @orders = orders.order('date DESC').limit(20)
   	end
     @orders_by_day = Order.group_by_day(:date, range: 30.days.ago.midnight..Date.today).count
   end
