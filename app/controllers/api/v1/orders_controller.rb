@@ -32,11 +32,16 @@ module Api
 
       # curl -v -H 'Authorization: Token token="111"' -H "Content-type: application/json" -X PUT -d '{"order": {"date": "2000-01-01 00:00:00", "currency": "JPY", "city": "Tokyo", "country": "Japon" }}' http://localhost:3010/api/orders/0000099
       def update
-        if @order.update(safe_params)
-          render :show, status: :ok, location: @order
+        if @order.present?
+          if @order.update(safe_params)
+            render :show, status: :ok, location: @order
+          else
+            render json: @order.errors.full_messages.to_sentence, status: :unprocessable_entity
+          end
         else
-          render json: @application.errors.full_messages.to_sentence, status: :unprocessable_entity
+          render json: 'Order Not Found', status: :not_found
         end
+
       end
 
       private
